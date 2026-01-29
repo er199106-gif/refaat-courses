@@ -38,6 +38,97 @@
       "explanation_ar": "القاهرة هي عاصمة جمهورية مصر العربية",
       "explanation_en": "Cairo is the capital of the Arab Republic of Egypt",
       "points": 15
+    },
+    {
+      "id": 4,
+      "category": "math",
+      "difficulty": "easy",
+      "question_ar": "كم عدد أيام الأسبوع؟",
+      "question_en": "How many days are in a week?",
+      "options_ar": ["5", "6", "7", "8"],
+      "options_en": ["5", "6", "7", "8"],
+      "correct_answer": 2,
+      "explanation_ar": "الأسبوع يحتوي على 7 أيام",
+      "explanation_en": "A week has 7 days",
+      "points": 10
+    },
+    {
+      "id": 5,
+      "category": "science",
+      "difficulty": "medium",
+      "question_ar": "ما هو أقرب كوكب إلى الشمس؟",
+      "question_en": "What is the closest planet to the Sun?",
+      "options_ar": ["المريخ", "الزهرة", "عطارد", "الأرض"],
+      "options_en": ["Mars", "Venus", "Mercury", "Earth"],
+      "correct_answer": 2,
+      "explanation_ar": "عطارد هو أقرب كوكب إلى الشمس",
+      "explanation_en": "Mercury is the closest planet to the Sun",
+      "points": 15
+    },
+    {
+      "id": 6,
+      "category": "arabic",
+      "difficulty": "easy",
+      "question_ar": "كم عدد حروف الهجاء العربية؟",
+      "question_en": "How many letters are in the Arabic alphabet?",
+      "options_ar": ["26", "28", "30", "32"],
+      "options_en": ["26", "28", "30", "32"],
+      "correct_answer": 1,
+      "explanation_ar": "الحروف الهجائية العربية 28 حرفاً",
+      "explanation_en": "The Arabic alphabet has 28 letters",
+      "points": 10
+    },
+    {
+      "id": 7,
+      "category": "math",
+      "difficulty": "medium",
+      "question_ar": "ما هو ناتج 12 ÷ 3؟",
+      "question_en": "What is 12 ÷ 3?",
+      "options_ar": ["2", "3", "4", "6"],
+      "options_en": ["2", "3", "4", "6"],
+      "correct_answer": 2,
+      "explanation_ar": "لأن 12 ÷ 3 = 4",
+      "explanation_en": "Because 12 ÷ 3 = 4",
+      "points": 15
+    },
+    {
+      "id": 8,
+      "category": "general",
+      "difficulty": "easy",
+      "question_ar": "ما هي أكبر دولة في العالم من حيث المساحة؟",
+      "question_en": "What is the largest country in the world by area?",
+      "options_ar": ["الصين", "كندا", "روسيا", "الولايات المتحدة"],
+      "options_en": ["China", "Canada", "Russia", "United States"],
+      "correct_answer": 2,
+      "explanation_ar": "روسيا هي أكبر دولة في العالم",
+      "explanation_en": "Russia is the largest country in the world",
+      "points": 15
+    },
+    {
+      "id": 9,
+      "category": "english",
+      "difficulty": "medium",
+      "question_ar": "ما هو الجمع لكلمة 'Child'؟",
+      "question_en": "What is the plural of 'Child'?",
+      "options_ar": ["Childs", "Children", "Childes", "Childies"],
+      "options_en": ["Childs", "Children", "Childes", "Childies"],
+      "correct_answer": 1,
+      "explanation_ar": "جمع Child هو Children",
+      "explanation_en": "The plural of Child is Children",
+      "points": 15
+    },
+    {
+      "id": 10,
+      "category": "science",
+      "difficulty": "easy",
+      "question_ar": "ما هو لون السماء في النهار؟",
+      "question_en": "What color is the sky during the day?",
+      "options_ar": ["أخضر", "أزرق", "أحمر", "أصفر"],
+      "options_en": ["Green", "Blue", "Red", "Yellow"],
+      "correct_answer": 1,
+      "explanation_ar": "السماء زرقاء بسبب تشتت الضوء",
+      "explanation_en": "The sky is blue due to light scattering",
+      "points": 10
     }
   ]
 }
