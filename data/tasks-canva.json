@@ -1,1 +1,54 @@
-
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title_ar": "تصميم بطاقة تهنئة",
+      "title_en": "Design Greeting Card",
+      "description_ar": "صمم بطاقة تهنئة لعيد ميلاد باستخدام الألوان الزاهية",
+      "description_en": "Design a birthday greeting card using bright colors",
+      "example_image": "https://via.placeholder.com/200x150/74EBD5/FFFFFF?text=Example",
+      "canva_template": "https://www.canva.com/design/EXAMPLE",
+      "points": 20
+    },
+    {
+      "id": 2,
+      "title_ar": "تصميم شعار شخصي",
+      "title_en": "Design Personal Logo",
+      "description_ar": "أنشئ شعاراً يعبر عن شخصيتك باستخدام الأشكال الهندسية",
+      "description_en": "Create a logo that expresses your personality using geometric shapes",
+      "example_image": "https://via.placeholder.com/200x150/6C63FF/FFFFFF?text=Logo",
+      "canva_template": "https://www.canva.com/design/EXAMPLE",
+      "points": 25
+    },
+    {
+      "id": 3,
+      "title_ar": "تصميم بوستر مدرسي",
+      "title_en": "Design School Poster",
+      "description_ar": "صمم بوستراً للترحيب بالفصل الدراسي الجديد",
+      "description_en": "Design a poster to welcome the new school semester",
+      "example_image": "https://via.placeholder.com/200x150/FFE066/FFFFFF?text=Poster",
+      "canva_template": "https://www.canva.com/design/EXAMPLE",
+      "points": 30
+    },
+    {
+      "id": 4,
+      "title_ar": "تصميم ملصق قواعد",
+      "title_en": "Design Rules Poster",
+      "description_ar": "أنشئ ملصقاً يوضح قواعد السلوك الجيد في المنزل",
+      "description_en": "Create a poster showing good behavior rules at home",
+      "example_image": "https://via.placeholder.com/200x150/FF6B6B/FFFFFF?text=Rules",
+      "canva_template": "https://www.canva.com/design/EXAMPLE",
+      "points": 20
+    },
+    {
+      "id": 5,
+      "title_ar": "تصميم بطاقة شكر",
+      "title_en": "Design Thank You Card",
+      "description_ar": "صمم بطاقة شكر ملونة لأحد أفراد العائلة",
+      "description_en": "Design a colorful thank you card for a family member",
+      "example_image": "https://via.placeholder.com/200x150/4ECDC4/FFFFFF?text=Thanks",
+      "canva_template": "https://www.canva.com/design/EXAMPLE",
+      "points": 25
+    }
+  ]
+}
