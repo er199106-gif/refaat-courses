@@ -87,25 +87,9 @@
   <text x="400" y="520" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.95">
     <tspan>لإتمامه جميع التحديات الشهرية بإبداع وتميز</tspan>
   </text>
-  
-  <!-- الكأس الذهبي في الأعلى -->
-  <g transform="translate(400, 100)" opacity="0.9">
-    <!-- قاعدة الكأس -->
-    <ellipse cx="0" cy="50" rx="30" ry="12" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
-    
-    <!-- جسم الكأس -->
-    <path d="M-20 0 Q-30 -40 0 -60 Q30 -40 20 0 L15 40 Q0 50 -15 40 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
-    
+
     <!-- نجمة على الكأس -->
     <path d="M0 -60 L3 -55 L8 -55 L5 -50 L6 -45 L0 -48 L-6 -45 L-5 -50 L-10 -55 L-3 -55 Z" fill="#FFE066" stroke="white" stroke-width="1"/>
-  </g>
-  
-  <!-- الميدالية في الأسفل -->
-  <g transform="translate(400, 550)">
-    <circle cx="0" cy="0" r="25" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
-    <circle cx="0" cy="0" r="18" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="4 2"/>
-    <path d="M0 -15 L5 -10 L10 -15 L8 0 L10 15 L5 10 L0 15 L-5 10 L-10 15 L-8 0 L-10 -15 L-5 -10 Z" fill="#6C63FF" stroke="white" stroke-width="1"/>
-    <circle cx="0" cy="0" r="8" fill="#FFE066" stroke="white" stroke-width="1.5"/>
   </g>
   
   <!-- التوقيعات -->
@@ -134,7 +118,7 @@
   
   <!-- النص السفلي بالإنجليزية -->
   <text x="200" y="592" font-family="MusketBold, Arial, sans-serif" font-size="12" text-anchor="start" fill="#6C63FF" font-weight="bold">
-    <tspan>© 2026 ER199. All Rights Reserved.</tspan>
+    <tspan>© 2026 ER1991. All Rights Reserved.</tspan>
   </text>
   
   <!-- النص السفلي بالعربية -->
