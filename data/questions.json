@@ -1,1 +1,43 @@
-
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "math",
+      "difficulty": "easy",
+      "question_ar": "ما هو ناتج 5 + 3؟",
+      "question_en": "What is 5 + 3?",
+      "options_ar": ["7", "8", "9", "10"],
+      "options_en": ["7", "8", "9", "10"],
+      "correct_answer": 1,
+      "explanation_ar": "لأن 5 + 3 = 8",
+      "explanation_en": "Because 5 + 3 = 8",
+      "points": 10
+    },
+    {
+      "id": 2,
+      "category": "english",
+      "difficulty": "easy",
+      "question_ar": "ما هي ترجمة كلمة 'Book'؟",
+      "question_en": "What is the translation of 'Book'?",
+      "options_ar": ["قلم", "كتاب", "كراسة", "دفتر"],
+      "options_en": ["Pen", "Book", "Notebook", "Diary"],
+      "correct_answer": 1,
+      "explanation_ar": "'Book' تعني 'كتاب' بالعربية",
+      "explanation_en": "'Book' means 'كتاب' in Arabic",
+      "points": 10
+    },
+    {
+      "id": 3,
+      "category": "general",
+      "difficulty": "medium",
+      "question_ar": "ما هي عاصمة مصر؟",
+      "question_en": "What is the capital of Egypt?",
+      "options_ar": ["الإسكندرية", "القاهرة", "السويس", "الإسماعيلية"],
+      "options_en": ["Alexandria", "Cairo", "Suez", "Ismailia"],
+      "correct_answer": 1,
+      "explanation_ar": "القاهرة هي عاصمة جمهورية مصر العربية",
+      "explanation_en": "Cairo is the capital of the Arab Republic of Egypt",
+      "points": 15
+    }
+  ]
+}
