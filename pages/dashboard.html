@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - Refaat Courses</title>
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body class="dashboard-page">
+    <div class="stars-background"></div>
+    
+    <!-- شريط التنقل العلوي -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="logo-text">
+                    <span class="logo-icon">🎓</span>
+                    <span class="logo-main">Refaat</span>
+                    <span class="logo-sub">Courses</span>
+                </h1>
+            </div>
+            
+            <div class="nav-links">
+                <a href="think.html" class="nav-link" data-section="think">
+                    <span class="nav-icon">🧠</span>
+                    <span class="nav-text">أفكر</span>
+                </a>
+                <a href="design.html" class="nav-link" data-section="design">
+                    <span class="nav-icon">🎨</span>
+                    <span class="nav-text">أصمم</span>
+                </a>
+                <a href="ai.html" class="nav-link" data-section="ai">
+                    <span class="nav-icon">🤖</span>
+                    <span class="nav-text">الذكاء الاصطناعي</span>
+                </a>
+                <a href="projects.html" class="nav-link" data-section="projects">
+                    <span class="nav-icon">🧩</span>
+                    <span class="nav-text">المشاريع</span>
+                </a>
+                <a href="achievements.html" class="nav-link" data-section="achievements">
+                    <span class="nav-icon">🏆</span>
+                    <span class="nav-text">الإنجازات</span>
+                </a>
+            </div>
+            
+            <div class="nav-user">
+                <div class="user-avatar" id="userAvatar">👦</div>
+                <div class="user-menu">
+                    <span class="user-name" id="userName">مرحباً!</span>
+                    <button class="logout-btn" onclick="authManager.logout()">تسجيل الخروج</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="dashboard-content">
+        <!-- قسم الترحيب والمعلومات الشخصية -->
+        <section class="welcome-section animate-fadeIn">
+            <div class="welcome-card">
+                <div class="welcome-header">
+                    <div class="user-profile-large">
+                        <div class="avatar-large" id="avatarLarge">👦</div>
+                        <div class="user-details">
+                            <h2 id="welcomeName">مرحباً يا بطل!</h2>
+                            <div class="user-stats">
+                                <div class="stat
