@@ -1,256 +1,1233 @@
-/* تحسينات للشاشات الصغيرة */
-@media (max-width: 768px) {
+/* ============================================
+   نظام التصميم المتجاوب
+   ============================================ */
+
+/* ============================================
+   1. نقاط التوقف (Breakpoints)
+   ============================================ */
+:root {
+    --breakpoint-xs: 320px;   /* هواتف صغيرة */
+    --breakpoint-sm: 480px;   /* هواتف */
+    --breakpoint-md: 768px;   /* أجهزة لوحية */
+    --breakpoint-lg: 1024px;  /* أجهزة لوحية كبيرة / لاب توب */
+    --breakpoint-xl: 1200px;  /* سطح مكتب */
+    --breakpoint-xxl: 1440px; /* شاشات كبيرة */
+}
+
+/* ============================================
+   2. وسائل الاستعلام العامة
+   ============================================ */
+@media (max-width: 1440px) {
+    .welcome-container,
+    .dashboard {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .welcome-container,
+    .dashboard {
+        max-width: 1000px;
+        padding: var(--spacing-md);
+    }
+    
+    .features-grid,
+    .sections-grid,
+    .stats,
+    .achievements-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   3. أجهزة اللاب توب والتابلت الكبير (768px - 1023px)
+   ============================================ */
+@media (max-width: 1023px) {
     :root {
-        --radius-sm: 6px;
-        --radius-md: 12px;
-        --radius-lg: 20px;
+        --spacing-lg: 20px;
+        --spacing-xl: 28px;
+        --spacing-2xl: 36px;
     }
     
-    .welcome-container {
-        padding-top: 20px;
-        max-width: 100%;
+    .welcome-container,
+    .dashboard {
+        max-width: 800px;
+        padding: var(--spacing-md);
     }
     
-    .logo-container h1 {
-        font-size: 2.2rem;
+    /* تحسين الشعار */
+    .logo-container {
+        padding: var(--spacing-md) var(--spacing-lg);
     }
     
-    .logo-icon {
-        font-size: 3.5rem;
+    .logo-main {
+        font-size: 2.5rem;
     }
     
-    .welcome-form {
-        padding: 25px 20px;
-        margin-top: 15px;
+    .logo-sub {
+        font-size: 1.8rem;
     }
     
-    .welcome-form h2 {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-    }
-    
-    #child-name {
-        padding: 12px;
+    .tagline {
         font-size: 1.1rem;
     }
     
-    .btn-primary {
-        padding: 12px 30px;
+    /* تحسين العناوين */
+    .greeting {
+        font-size: 2.5rem;
+    }
+    
+    .sub-greeting {
+        font-size: 1.3rem;
+    }
+    
+    /* تحسين الأقسام */
+    .features-grid,
+    .sections-grid {
+        gap: var(--spacing-md);
+    }
+    
+    .feature-card,
+    .section-content {
+        padding: var(--spacing-md);
+    }
+    
+    .feature-icon,
+    .floating-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2.5rem;
+    }
+    
+    .section-icon {
+        font-size: 3rem;
+    }
+    
+    /* تحسين شاشة التحميل */
+    .loading-content {
+        padding: var(--spacing-xl);
+    }
+    
+    /* تحسين لوحة التحكم */
+    .user-profile {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .user-info {
+        width: 100%;
+    }
+    
+    .logout-btn {
+        width: 100%;
+    }
+    
+    /* تحسين المساعد الذكي */
+    .smart-assistant {
+        left: var(--spacing-md);
+        bottom: var(--spacing-md);
+    }
+    
+    .assistant-chat {
+        width: 280px;
+        left: -110px;
+    }
+}
+
+/* ============================================
+   4. الأجهزة اللوحية (480px - 767px)
+   ============================================ */
+@media (max-width: 767px) {
+    :root {
+        --spacing-md: 14px;
+        --spacing-lg: 18px;
+        --spacing-xl: 24px;
+        --spacing-2xl: 32px;
+    }
+    
+    html {
+        font-size: 15px;
+    }
+    
+    .welcome-container,
+    .dashboard {
+        padding: var(--spacing-sm);
+    }
+    
+    /* تحسين الشعار للشاشات الصغيرة */
+    .logo-container {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .logo-text {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .logo-main {
+        font-size: 2.2rem;
+    }
+    
+    .logo-sub {
+        font-size: 1.6rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    /* تحسين محتوى الترحيب */
+    .welcome-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .floating-elements {
+        gap: var(--spacing-md);
+    }
+    
+    .floating-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .greeting {
+        font-size: 2rem;
+    }
+    
+    .sub-greeting {
         font-size: 1.2rem;
     }
     
-    .main-header {
-        padding: 15px;
-        margin-bottom: 20px;
+    /* تحسين إدخال الاسم */
+    .name-section {
+        padding: var(--spacing-lg);
     }
     
-    .header-content {
+    .name-input {
+        padding: var(--spacing-md) var(--spacing-lg);
+        padding-left: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .input-icon {
+        left: var(--spacing-md);
+        font-size: 1.3rem;
+    }
+    
+    /* تحسين الأزرار */
+    .start-btn,
+    .continue-btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: 1.1rem;
+    }
+    
+    .btn-icon {
+        font-size: 1.3rem;
+    }
+    
+    /* تحسين الشبكات */
+    .features-grid,
+    .sections-grid,
+    .stats,
+    .achievements-list {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* تحسين البطاقات */
+    .feature-card,
+    .section-content,
+    .stat-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .section-icon {
+        font-size: 2.5rem;
+    }
+    
+    /* تحسين لوحة التحكم */
+    .dashboard-header {
+        padding: var(--spacing-md);
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+    
+    .quick-stats,
+    .recent-achievements {
+        margin: var(--spacing-md);
+        padding: var(--spacing-lg);
+    }
+    
+    .main-sections {
+        padding: var(--spacing-md);
+    }
+    
+    /* تحسين التقدم الأسبوعي */
+    .weekly-progress {
+        padding: var(--spacing-md);
+    }
+    
+    /* تحسين المساعد الذكي */
+    .assistant-chat {
+        width: 250px;
+        left: -95px;
+        bottom: 60px;
+    }
+    
+    .chat-messages {
+        height: 250px;
+    }
+    
+    /* إخفاء بعض العناصر في الشاشات الصغيرة */
+    .input-hint {
+        font-size: 0.8rem;
+    }
+    
+    .feature-list {
+        display: none;
+    }
+    
+    .age-note {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .note-icon {
+        margin-bottom: var(--spacing-xs);
+    }
+}
+
+/* ============================================
+   5. الهواتف الذكية (320px - 479px)
+   ============================================ */
+@media (max-width: 479px) {
+    :root {
+        --spacing-xs: 3px;
+        --spacing-sm: 8px;
+        --spacing-md: 12px;
+        --spacing-lg: 16px;
+        --spacing-xl: 20px;
+        --spacing-2xl: 24px;
+        
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 10px;
+        --radius-xl: 12px;
+    }
+    
+    html {
+        font-size: 14px;
+    }
+    
+    body {
+        font-size: 0.95rem;
+    }
+    
+    .welcome-container,
+    .dashboard {
+        padding: var(--spacing-xs);
+    }
+    
+    /* تحسين الشعار للهواتف الصغيرة */
+    .logo-container {
+        padding: var(--spacing-sm);
+        width: 100%;
+    }
+    
+    .logo-main {
+        font-size: 1.8rem;
+    }
+    
+    .logo-sub {
+        font-size: 1.3rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين محتوى الترحيب */
+    .welcome-header {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    /* تحسين العناصر العائمة */
+    .floating-elements {
+        gap: var(--spacing-sm);
+    }
+    
+    .floating-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    
+    .greeting {
+        font-size: 1.8rem;
+    }
+    
+    .sub-greeting {
+        font-size: 1.1rem;
+    }
+    
+    /* تحسين قسم الإدخال */
+    .name-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .input-label {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .name-input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        padding-left: 45px;
+        font-size: 1.1rem;
+        border-width: 2px;
+    }
+    
+    .input-icon {
+        left: var(--spacing-sm);
+        font-size: 1.2rem;
+    }
+    
+    /* تحسين الأزرار */
+    .action-buttons {
+        max-width: 100%;
+    }
+    
+    .start-btn,
+    .continue-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 1rem;
+        border-radius: var(--radius-md);
+    }
+    
+    .btn-icon {
+        font-size: 1.2rem;
+    }
+    
+    /* تحسين قسم المميزات */
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+    
+    .feature-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين ملاحظة العمر */
+    .age-note {
+        padding: var(--spacing-md);
+    }
+    
+    .note-icon {
+        font-size: 1.5rem;
+    }
+    
+    .age-note p {
+        font-size: 1rem;
+    }
+    
+    /* تحسين التذييل */
+    .welcome-footer {
+        padding: var(--spacing-md);
+    }
+    
+    .parent-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+    
+    .footer-copyright p {
+        font-size: 0.8rem;
+    }
+    
+    /* تحسين شاشة التحميل */
+    .loading-content {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border-width: 3px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+    }
+    
+    /* تحسين لوحة التحكم */
+    .dashboard-header {
+        padding: var(--spacing-sm);
+    }
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .user-name {
+        font-size: 1.4rem;
+    }
+    
+    .user-level,
+    .user-points {
+        font-size: 0.9rem;
+    }
+    
+    .logout-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+    
+    .quick-stats,
+    .recent-achievements {
+        margin: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .stat-card p {
+        font-size: 1rem;
+    }
+    
+    /* تحسين الأقسام الرئيسية */
+    .main-sections {
+        padding: var(--spacing-sm);
+    }
+    
+    .main-sections h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section-content {
+        padding: var(--spacing-md);
+    }
+    
+    .section-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .section-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين المساعد الذكي */
+    .smart-assistant {
+        left: var(--spacing-sm);
+        bottom: var(--spacing-sm);
+    }
+    
+    .assistant-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .assistant-chat {
+        width: 220px;
+        left: -85px;
+        bottom: 55px;
+    }
+    
+    .chat-header {
+        padding: var(--spacing-sm);
+    }
+    
+    .chat-header h4 {
+        font-size: 0.9rem;
+    }
+    
+    .chat-messages {
+        height: 200px;
+        padding: var(--spacing-sm);
+    }
+    
+    .message {
+        padding: var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+    
+    .chat-input {
+        padding: var(--spacing-sm);
+    }
+    
+    .chat-input input {
+        padding: var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+    
+    .chat-input button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين التذييل الداخلي */
+    .footer {
+        padding: var(--spacing-md);
+    }
+    
+    .footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   6. الهواتف صغيرة الحجم جداً (أقل من 320px)
+   ============================================ */
+@media (max-width: 319px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .welcome-container,
+    .dashboard {
+        padding: 4px;
+    }
+    
+    /* إخفاء بعض العناصر غير الضرورية */
+    .floating-elements {
+        display: none;
+    }
+    
+    .tagline,
+    .input-hint,
+    .feature-list,
+    .age-note p,
+    .footer-copyright .english-text {
+        display: none;
+    }
+    
+    /* تكبير العناصر المهمة */
+    .logo-main {
+        font-size: 1.6rem;
+    }
+    
+    .logo-sub {
+        font-size: 1.1rem;
+    }
+    
+    .greeting {
+        font-size: 1.6rem;
+    }
+    
+    .input-label {
+        font-size: 1rem;
+    }
+    
+    .name-input {
+        font-size: 1rem;
+    }
+    
+    /* تحسين الشبكات */
+    .features-grid,
+    .sections-grid {
+        gap: 8px;
+    }
+    
+    .feature-card,
+    .section-content {
+        padding: 12px;
+    }
+}
+
+/* ============================================
+   7. التوجيه الأفقي (Landscape)
+   ============================================ */
+@media (max-height: 600px) and (orientation: landscape) {
+    .welcome-container {
+        padding: var(--spacing-sm);
+    }
+    
+    .welcome-content {
+        padding: var(--spacing-md);
+    }
+    
+    .floating-elements {
+        display: none;
+    }
+    
+    .greeting {
+        font-size: 1.8rem;
+    }
+    
+    .sub-greeting {
+        font-size: 1rem;
+    }
+    
+    .name-section {
+        padding: var(--spacing-md);
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .feature-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    
+    .feature-card h4 {
+        font-size: 1rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.8rem;
+    }
+    
+    .age-note {
+        padding: var(--spacing-sm);
+    }
+    
+    /* تحسين لوحة التحكم في الوضع الأفقي */
+    .dashboard-header {
+        padding: var(--spacing-sm);
+    }
+    
+    .user-profile {
+        flex-direction: row;
+        padding: var(--spacing-sm);
     }
     
     .avatar {
         width: 50px;
         height: 50px;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     
-    .child-name {
-        font-size: 1.3rem;
-    }
-    
-    .points-container {
-        padding: 6px 15px;
-        font-size: 1.1rem;
-    }
-    
-    .sections-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 15px;
-    }
-    
-    .section-card {
-        padding: 20px 10px;
-    }
-    
-    .section-icon {
-        font-size: 2rem;
-    }
-    
-    .section-card h3 {
-        font-size: 1.15rem;
-    }
-    
-    .section-card p {
-        font-size: 0.85rem;
-    }
-    
-    .floating-ai {
-        bottom: 20px;
-        left: 20px;
-    }
-    
-    .ai-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-    
-    .section-content {
-        max-width: 95%;
-        margin: 0 10px;
-    }
-    
-    .close-section {
-        width: 35px;
-        height: 35px;
+    .user-name {
         font-size: 1.2rem;
     }
-}
-
-/* شاشات صغيرة جداً */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
+    
+    .user-level,
+    .user-points {
+        font-size: 0.8rem;
     }
     
-    .welcome-container {
-        padding-top: 10px;
+    .logout-btn {
+        padding: var(--spacing-sm);
+        font-size: 0.8rem;
     }
     
-    .logo-container h1 {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .stat-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .stat-value {
         font-size: 1.8rem;
     }
-    
-    .logo-icon {
-        font-size: 3rem;
+}
+
+/* ============================================
+   8. الشاشات العالية الدقة (Retina)
+   ============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-icon,
+    .floating-icon,
+    .feature-icon,
+    .section-icon,
+    .avatar {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
     
-    .welcome-form h2 {
-        font-size: 1.4rem;
+    .name-input,
+    button,
+    .btn {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ============================================
+   9. الوضع الداكن (Dark Mode)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #FFFFFF;
+        --text-secondary: #CCCCCC;
+        --text-light: #999999;
+        
+        --bg-primary: #1A1A1A;
+        --bg-secondary: #2D2D2D;
+        --bg-tertiary: #404040;
+        
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+        --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
     }
     
-    #child-name {
-        padding: 10px;
-        font-size: 1rem;
+    .welcome-page {
+        background: linear-gradient(135deg, #2D3748 0%, #4A5568 100%);
     }
     
-    .btn-primary {
-        padding: 10px 25px;
-        font-size: 1.1rem;
+    .stars-background {
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255, 224, 102, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(116, 235, 213, 0.05) 0%, transparent 50%);
     }
     
-    .language-toggle {
-        gap: 5px;
-        font-size: 0.85rem;
+    .welcome-content,
+    .feature-card,
+    .section-content,
+    .stat-card,
+    .quick-stats,
+    .recent-achievements,
+    .loading-content {
+        background: var(--bg-primary);
     }
     
-    .switch {
-        width: 50px;
-        height: 28px;
+    .name-section,
+    .age-note {
+        background: var(--bg-secondary);
+        border-color: var(--primary-color);
     }
     
-    .slider:before {
-        height: 20px;
-        width: 20px;
+    .name-input {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--secondary-color);
     }
     
-    input:checked + .slider:before {
-        transform: translateX(22px);
+    .name-input:focus {
+        border-color: var(--primary-color);
+        background: var(--bg-secondary);
     }
     
+    .assistant-chat {
+        background: var(--bg-primary);
+    }
+    
+    .chat-messages {
+        background: var(--bg-secondary);
+    }
+    
+    .chat-input {
+        background: var(--bg-primary);
+        border-top-color: var(--bg-tertiary);
+    }
+    
+    .chat-input input {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--bg-secondary);
+    }
+}
+
+/* ============================================
+   10. طباعة الصفحات
+   ============================================ */
+@media print {
+    .welcome-page {
+        background: white !important;
+    }
+    
+    .stars-background,
+    .floating-elements,
+    .action-buttons,
+    .parent-link,
+    .smart-assistant,
+    .logout-btn,
+    .chat-input,
+    button,
+    .btn {
+        display: none !important;
+    }
+    
+    .welcome-container,
+    .dashboard {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .welcome-content,
+    .feature-card,
+    .section-content,
+    .stat-card,
+    .quick-stats,
+    .recent-achievements {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        margin: 10px 0 !important;
+        break-inside: avoid;
+    }
+    
+    .logo-container {
+        background: white !important;
+        box-shadow: none !important;
+        border: 2px solid #333 !important;
+    }
+    
+    .logo-main {
+        color: black !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+    }
+    
+    .logo-sub {
+        color: #666 !important;
+    }
+    
+    .feature-icon,
+    .section-icon,
+    .avatar {
+        background: #f0f0f0 !important;
+        color: #333 !important;
+    }
+    
+    .footer {
+        background: white !important;
+        color: black !important;
+        border-top: 2px solid #333;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline;
+    }
+    
+    @page {
+        margin: 1cm;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    
+    .features-grid,
+    .sections-grid,
+    .stats {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   11. دعم اللمس (Touch Devices)
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* زيادة مساحة النقر للأجهزة التي تعمل باللمس */
+    button,
+    .btn,
+    .option,
+    .feature-card,
+    .section-content,
+    .stat-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .name-input {
+        min-height: 44px;
+    }
+    
+    /* إزالة تأثيرات Hover التي لا تعمل باللمس */
+    .hover-lift:hover,
+    .hover-scale:hover,
+    .hover-rotate:hover,
+    .hover-glow:hover {
+        transform: none;
+        box-shadow: var(--shadow-md);
+    }
+    
+    /* إضافة تأثيرات النقر */
+    button:active,
+    .btn:active,
+    .option:active,
+    .feature-card:active,
+    .section-content:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+    
+    /* تحسين التمرير */
+    .chat-messages,
+    .achievements-list {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    
+    /* منع تكبير النص عند النقر المزدوج */
+    input,
+    textarea,
+    select,
+    button {
+        font-size: 16px; /* منع التكبير التلقائي في iOS */
+    }
+}
+
+/* ============================================
+   12. الأجهزة ذات الشاشات العريضة (Ultra-wide)
+   ============================================ */
+@media (min-width: 1920px) {
+    .welcome-container,
+    .dashboard {
+        max-width: 1600px;
+    }
+    
+    .features-grid,
     .sections-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-xl);
     }
     
-    .section-card {
-        padding: 18px 8px;
+    .feature-card,
+    .section-content {
+        padding: var(--spacing-xl);
+    }
+    
+    .feature-icon,
+    .floating-icon {
+        width: 100px;
+        height: 100px;
+        font-size: 4rem;
     }
     
     .section-icon {
-        font-size: 1.8rem;
+        font-size: 4rem;
     }
     
-    .section-card h3 {
-        font-size: 1rem;
+    .greeting {
+        font-size: 4rem;
     }
     
-    .section-card p {
-        font-size: 0.8rem;
-    }
-    
-    .progress-bar {
-        height: 8px;
-    }
-    
-    .copyright {
-        font-size: 0.8rem;
-        padding-top: 15px;
+    .sub-greeting {
+        font-size: 2rem;
     }
 }
 
-/* تحسينات للوحات والتابلت */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .sections-grid {
-        grid-template-columns: repeat(3, 1fr);
+/* ============================================
+   13. فئات مساعدة للاستجابة
+   ============================================ */
+.hide-on-mobile {
+    display: block;
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .hide-on-mobile {
+        display: none !important;
     }
     
-    .parent-stats {
-        grid-template-columns: repeat(2, 1fr);
+    .show-on-mobile {
+        display: block !important;
     }
 }
 
-/* شاشات كبيرة */
-@media (min-width: 1025px) {
-    body {
-        padding: 0 20px;
-    }
-    
-    .welcome-container {
-        max-width: 600px;
-    }
-    
-    .sections-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .floating-ai {
-        bottom: 40px;
-        left: 40px;
+/* ============================================
+   14. تحسين أداء الرسوم المتحركة
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 
-/* وضع التصميم الليلي (اختياري) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dark: #F8F9FA;
-        --light: #2D2D44;
+/* ============================================
+   15. دعم المتصفحات القديمة
+   ============================================ */
+@supports not (display: grid) {
+    .features-grid,
+    .sections-grid,
+    .stats,
+    .achievements-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
-    body {
-        background: var(--light);
-        color: var(--dark);
-    }
-    
-    .welcome-form,
-    .main-header,
-    .section-card,
+    .feature-card,
     .section-content,
-    .stat-card,
-    .weekly-chart {
-        background: #3a3a5a;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    .stat-card {
+        flex: 1 1 300px;
+        margin: 10px;
     }
     
-    .option-btn {
-        background: #4a4a6a;
-        border-color: #5a5a7a;
-        color: var(--dark);
+    @media (max-width: 767px) {
+        .feature-card,
+        .section-content,
+        .stat-card {
+            flex: 1 1 100%;
+        }
+    }
+}
+
+/* ============================================
+   16. فئات مساعدة للتخطيط
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0 var(--spacing-md);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 calc(var(--spacing-md) * -1);
+}
+
+.col {
+    flex: 1 0 0%;
+    padding: 0 var(--spacing-md);
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 var(--spacing-sm);
     }
     
-    .option-btn:hover {
-        background: var(--secondary);
+    .container-fluid {
+        padding: 0 var(--spacing-sm);
     }
+    
+    .row {
+        margin: 0 calc(var(--spacing-sm) * -1);
+    }
+    
+    .col {
+        padding: 0 var(--spacing-sm);
+        flex: 0 0 100%;
+    }
+}
+
+/* ============================================
+   17. فئات المسافات المتجاوبة
+   ============================================ */
+.space-responsive {
+    margin: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+@media (max-width: 767px) {
+    .space-responsive {
+        margin: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 479px) {
+    .space-responsive {
+        margin: var(--spacing-xs);
+        padding: var(--spacing-xs);
+    }
+}
+
+/* ============================================
+   18. فئات الخطوط المتجاوبة
+   ============================================ */
+.text-responsive {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+    .text-responsive {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 479px) {
+    .text-responsive {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* ============================================
+   19. فئات الصور المتجاوبة
+   ============================================ */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   20. فئات الفيديو المتجاوب
+   ============================================ */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-responsive iframe,
+.video-responsive video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
