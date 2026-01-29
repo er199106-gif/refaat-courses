@@ -1,197 +1,822 @@
-// تهيئة قسم الذكاء الاصطناعي
-function initializeAISection() {
-    console.log('تهيئة قسم الذكاء الاصطناعي...');
-    loadAITasks();
-}
+/**
+ * نظام المصادقة وإدارة المستخدمين
+ * مسؤول عن تسجيل الدخول، حفظ البيانات، وإدارة الجلسات
+ */
 
-// تحميل مهام الذكاء الاصطناعي
-async function loadAITasks() {
-    try {
-        const tasks = await app.loadJSONData('ai-tasks.json');
-        
-        if (tasks && tasks.tasks) {
-            displayAITasks(tasks.tasks);
-        } else {
-            loadDefaultAITasks();
-        }
-    } catch (error) {
-        console.error('خطأ في تحميل مهام الذكاء الاصطناعي:', error);
-        loadDefaultAITasks();
+class AuthManager {
+    constructor() {
+        this.currentUser = null;
+        this.users = [];
+        this.init();
     }
-}
 
-// مهام AI افتراضية
-function loadDefaultAITasks() {
-    const defaultTasks = [
-        {
-            id: 1,
-            title_ar: "كتابة قصة قصيرة",
-            title_en: "Write a Short Story",
-            description_ar: "اطلب من الذكاء الاصطناعي كتابة قصة عن صديق جديد",
-            description_en: "Ask AI to write a story about a new friend",
-            prompt_ar: "اكتب قصة قصيرة عن طفل التقى بصديق جديد في الحديقة وعاشا مغامرة ممتعة",
-            prompt_en: "Write a short story about a child who met a new friend in the park and had a fun adventure",
-            points: 20
-        },
-        {
-            id: 2,
-            title_ar: "شرح مفهوم علمي",
-            title_en: "Explain Scientific Concept",
-            description_ar: "اطلب شرح مبسط لظاهرة قوس قزح",
-            description_en: "Ask for a simple explanation of rainbow phenomenon",
-            prompt_ar: "اشرح لي بطريقة بسيطة كيف يتكون قوس قزح في السماء بعد المطر؟",
-            prompt_en: "Explain to me in a simple way how a rainbow forms in the sky after rain?",
-            points: 25
-        },
-        {
-            id: 3,
-            title_ar: "إنشاء نص شعري",
-            title_en: "Create a Poem",
-            description_ar: "اطلب قصيدة عن الفصول الأربعة",
-            description_en: "Ask for a poem about the four seasons",
-            prompt_ar: "اكتب قصيدة قصيرة عن الفصول الأربعة وجمال كل فصل",
-            prompt_en: "Write a short poem about the four seasons and the beauty of each season",
-            points: 30
-        },
-        {
-            id: 4,
-            title_ar: "حل مشكلة رياضية",
-            title_en: "Solve Math Problem",
-            description_ar: "اطلب مساعدة في حل مسألة رياضية",
-            description_en: "Ask for help solving a math problem",
-            prompt_ar: "ساعدني في حل هذه المسألة: إذا كان لدى أحمد 5 تفاحات وأعطى صديقه 2، كم تفاحة بقيت معه؟",
-            prompt_en: "Help me solve this problem: If Ahmed has 5 apples and gives 2 to his friend, how many apples does he have left?",
-            points: 20
-        },
-        {
-            id: 5,
-            title_ar: "ترجمة جملة",
-            title_en: "Translate a Sentence",
-            description_ar: "اطلب ترجمة جملة من العربية إلى الإنجليزية",
-            description_en: "Ask to translate a sentence from Arabic to English",
-            prompt_ar: "ترجم هذه الجملة إلى الإنجليزية: 'العلم نور والجهل ظلام'",
-            prompt_en: "Translate this sentence to Arabic: 'Knowledge is light and ignorance is darkness'",
-            points: 25
+    /**
+     * تهيئة النظام
+     */
+    init() {
+        this.loadUsers();
+        this.checkExistingSession();
+        this.setupEventListeners();
+    }
+
+    /**
+     * تحميل بيانات المستخدمين من LocalStorage
+     */
+    loadUsers() {
+        try {
+            const savedUsers = localStorage.getItem('refaat_users');
+            if (savedUsers) {
+                this.users = JSON.parse(savedUsers);
+                console.log('تم تحميل بيانات المستخدمين:', this.users.length);
+            }
+        } catch (error) {
+            console.error('خطأ في تحميل بيانات المستخدمين:', error);
+            this.users = [];
         }
-    ];
-    
-    displayAITasks(defaultTasks);
-}
+    }
 
-// عرض مهام الذكاء الاصطناعي
-function displayAITasks(tasks) {
-    const container = document.getElementById('ai-tasks');
-    const isArabic = !document.body.classList.contains('en');
-    
-    container.innerHTML = tasks.map(task => `
-        <div class="ai-task-card" style="
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-left: 5px solid #FFE066;
-        ">
-            <div style="display:flex;align-items:center;gap:15px;margin-bottom:15px">
-                <div style="
-                    width:40px;
-                    height:40px;
-                    background:#FFE066;
-                    border-radius:50%;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    font-weight:bold;
-                    color:#6C63FF;
-                ">${task.id}</div>
-                <h3 style="color:#6C63FF;margin:0">${isArabic ? task.title_ar : task.title_en}</h3>
-            </div>
-            
-            <p style="margin-bottom:20px;color:#555;line-height:1.6">
-                ${isArabic ? task.description_ar : task.description_en}
-            </p>
-            
-            <div style="background:#FFF8E1;padding:15px;border-radius:10px;margin-bottom:15px">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-                    <strong style="color:#6C63FF">${isArabic ? 'الجملة الجاهزة:' : 'Ready Prompt:'}</strong>
-                    <button class="copy-btn" data-prompt="${isArabic ? task.prompt_ar : task.prompt_en}" style="
-                        background:#6C63FF;
-                        color:white;
-                        border:none;
-                        padding:8px 15px;
-                        border-radius:20px;
-                        cursor:pointer;
-                        display:flex;
-                        align-items:center;
-                        gap:5px;
-                    ">
-                        <span>✂️</span> ${isArabic ? 'نسخ' : 'Copy'}
-                    </button>
-                </div>
-                <div style="
-                    background:white;
-                    padding:12px;
-                    border-radius:8px;
-                    border:2px solid #FFE066;
-                    font-family:monospace;
-                    font-size:0.95rem;
-                    color:#333;
-                ">${isArabic ? task.prompt_ar : task.prompt_en}</div>
-            </div>
-            
-            <div style="display:flex;gap:10px">
-                <a href="https://gemini.google.com" target="_blank" class="btn btn-primary" style="flex:1">
-                    🤖 فتح Gemini
-                </a>
-                <button class="btn btn-secondary complete-btn" data-task-id="${task.id}" data-points="${task.points}" style="flex:1">
-                    ✅ إنجاز المهمة
-                </button>
-            </div>
-        </div>
-    `).join('');
-    
-    // إضافة معالجات النسخ والإنجاز
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const prompt = this.getAttribute('data-prompt');
-            navigator.clipboard.writeText(prompt).then(() => {
-                app.showNotification('تم نسخ الجملة إلى الحافظة! ✅', 'success');
+    /**
+     * التحقق من وجود جلسة مستخدم نشطة
+     */
+    checkExistingSession() {
+        const savedUser = localStorage.getItem('refaat_current_user');
+        if (savedUser) {
+            try {
+                this.currentUser = JSON.parse(savedUser);
+                this.showContinueButton();
+                console.log('تم العثور على مستخدم نشط:', this.currentUser.name);
+            } catch (error) {
+                console.error('خطأ في تحميل الجلسة:', error);
+                this.clearSession();
+            }
+        }
+    }
+
+    /**
+     * إعداد مستمعي الأحداث
+     */
+    setupEventListeners() {
+        // حدث زر البدء
+        const startButton = document.getElementById('startButton');
+        if (startButton) {
+            startButton.addEventListener('click', () => this.startJourney());
+        }
+
+        // حدث زر الاستمرار
+        const continueButton = document.getElementById('continueButton');
+        if (continueButton) {
+            continueButton.addEventListener('click', () => this.continueJourney());
+        }
+
+        // حدث إدخال الاسم (الضغط على Enter)
+        const nameInput = document.getElementById('childName');
+        if (nameInput) {
+            nameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.startJourney();
+                }
             });
-        });
-    });
-    
-    document.querySelectorAll('.complete-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const taskId = this.getAttribute('data-task-id');
-            const points = parseInt(this.getAttribute('data-points'));
-            completeAITask(taskId, points);
-        });
-    });
-}
 
-// إنجاز مهمة الذكاء الاصطناعي
-function completeAITask(taskId, points) {
-    // التحقق من عدم إنجاز المهمة سابقاً
-    const completedAITasks = app.getFromLocalStorage('completedAITasks') || [];
-    
-    if (completedAITasks.includes(taskId)) {
-        app.showNotification('تم إنجاز هذه المهمة سابقاً!', 'info');
-        return;
+            // حدث التركيز على حقل الإدخال
+            nameInput.addEventListener('focus', () => {
+                nameInput.parentElement.classList.add('focused');
+            });
+
+            nameInput.addEventListener('blur', () => {
+                nameInput.parentElement.classList.remove('focused');
+            });
+        }
     }
-    
-    // إضافة المهمة إلى القائمة
-    completedAITasks.push(taskId);
-    app.saveToLocalStorage('completedAITasks', completedAITasks);
-    
-    // تحديث النقاط
-    app.progress.updateProgress(points, true);
-    
-    app.showNotification(`ممتاز! حصلت على ${points} نقاط 🎉`, 'success');
+
+    /**
+     * بدء رحلة جديدة
+     */
+    startJourney() {
+        const nameInput = document.getElementById('childName');
+        const childName = nameInput ? nameInput.value.trim() : '';
+
+        // التحقق من صحة الاسم
+        if (!this.validateName(childName)) {
+            this.showError('الرجاء إدخال اسم صحيح (من 2 إلى 20 حرفاً)');
+            return;
+        }
+
+        // عرض شاشة التحميل
+        this.showLoading();
+
+        // إنشاء مستخدم جديد بعد تأخير لمحاكاة التحميل
+        setTimeout(() => {
+            this.createNewUser(childName);
+        }, 1500);
+    }
+
+    /**
+     * الاستمرار في الرحلة الحالية
+     */
+    continueJourney() {
+        if (!this.currentUser) {
+            this.showError('لا توجد جلسة نشطة');
+            return;
+        }
+
+        this.showLoading();
+        
+        setTimeout(() => {
+            this.redirectToDashboard();
+        }, 1000);
+    }
+
+    /**
+     * التحقق من صحة الاسم
+     */
+    validateName(name) {
+        if (!name || name.length < 2 || name.length > 20) {
+            return false;
+        }
+
+        // التحقق من أن الاسم لا يحتوي على رموز غير مسموحة
+        const invalidChars = /[<>/\\{}[\];:=]/;
+        if (invalidChars.test(name)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * إنشاء مستخدم جديد
+     */
+    createNewUser(name) {
+        const userId = this.generateUserId();
+        
+        this.currentUser = {
+            id: userId,
+            name: name,
+            avatar: this.generateAvatar(name),
+            joinDate: new Date().toISOString(),
+            lastLogin: new Date().toISOString(),
+            level: 1,
+            points: 0,
+            completedTasks: 0,
+            streak: 0,
+            achievements: [],
+            progress: {
+                think: 0,
+                design: 0,
+                ai: 0,
+                projects: 0
+            },
+            settings: {
+                sound: true,
+                music: true,
+                notifications: true,
+                language: 'ar'
+            },
+            completedQuestions: [],
+            completedDesignTasks: [],
+            completedAITasks: [],
+            completedProjects: []
+        };
+
+        // إضافة المستخدم إلى القائمة
+        this.users.push(this.currentUser);
+        
+        // حفظ البيانات
+        this.saveData();
+        
+        // عرض رسالة الترحيب
+        this.showWelcomeMessage(name);
+        
+        // التوجيه للوحة التحكم بعد تأخير
+        setTimeout(() => {
+            this.redirectToDashboard();
+        }, 2000);
+    }
+
+    /**
+     * توليد معرف فريد للمستخدم
+     */
+    generateUserId() {
+        const timestamp = Date.now();
+        const random = Math.random().toString(36).substr(2, 9);
+        return `user_${timestamp}_${random}`;
+    }
+
+    /**
+     * توليد رمز تعبيري بناءً على الاسم
+     */
+    generateAvatar(name) {
+        const avatars = ['👦', '👧', '🧒', '👨', '👩', '🧑', '👶'];
+        const hash = this.hashString(name);
+        return avatars[hash % avatars.length];
+    }
+
+    /**
+     * توليد قيمة هاش من النص
+     */
+    hashString(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        return Math.abs(hash);
+    }
+
+    /**
+     * حفظ البيانات في LocalStorage
+     */
+    saveData() {
+        try {
+            // حفظ المستخدم الحالي
+            localStorage.setItem('refaat_current_user', JSON.stringify(this.currentUser));
+            
+            // حفظ قائمة المستخدمين
+            localStorage.setItem('refaat_users', JSON.stringify(this.users));
+            
+            console.log('تم حفظ بيانات المستخدم:', this.currentUser.name);
+        } catch (error) {
+            console.error('خطأ في حفظ البيانات:', error);
+            this.showError('تعذر حفظ البيانات. الرجاء المحاولة مرة أخرى.');
+        }
+    }
+
+    /**
+     * تحديث بيانات المستخدم
+     */
+    updateUser(updates) {
+        if (!this.currentUser) return;
+
+        Object.assign(this.currentUser, updates);
+        this.currentUser.lastLogin = new Date().toISOString();
+        
+        // تحديث في القائمة
+        const index = this.users.findIndex(u => u.id === this.currentUser.id);
+        if (index !== -1) {
+            this.users[index] = this.currentUser;
+        }
+        
+        this.saveData();
+    }
+
+    /**
+     * إضافة نقاط للمستخدم
+     */
+    addPoints(points, reason = '') {
+        if (!this.currentUser || points <= 0) return;
+
+        const oldPoints = this.currentUser.points;
+        this.currentUser.points += points;
+        
+        // تحديث المستوى كل 100 نقطة
+        const oldLevel = this.currentUser.level;
+        this.currentUser.level = Math.floor(this.currentUser.points / 100) + 1;
+        
+        this.updateUser({ points: this.currentUser.points, level: this.currentUser.level });
+        
+        // عرض رسالة النقاط
+        this.showPointsAnimation(points, reason);
+        
+        // التحقق من مستوى جديد
+        if (this.currentUser.level > oldLevel) {
+            this.showLevelUpAnimation();
+        }
+        
+        return {
+            oldPoints,
+            newPoints: this.currentUser.points,
+            pointsAdded: points,
+            oldLevel,
+            newLevel: this.currentUser.level
+        };
+    }
+
+    /**
+     * تحديث تقدم قسم معين
+     */
+    updateProgress(section, percentage) {
+        if (!this.currentUser || !this.currentUser.progress) return;
+
+        if (!this.currentUser.progress[section]) {
+            this.currentUser.progress[section] = 0;
+        }
+
+        // التأكد من أن النسبة بين 0 و 100
+        percentage = Math.max(0, Math.min(100, percentage));
+        
+        // تحديث إذا كانت النسبة أكبر من السابقة
+        if (percentage > this.currentUser.progress[section]) {
+            this.currentUser.progress[section] = percentage;
+            this.updateUser({ progress: this.currentUser.progress });
+            
+            // منح نقاط للتقدم
+            const pointsEarned = Math.floor((percentage - this.currentUser.progress[section]) / 10) * 5;
+            if (pointsEarned > 0) {
+                this.addPoints(pointsEarned, `التقدم في قسم ${this.getSectionName(section)}`);
+            }
+        }
+    }
+
+    /**
+     * إكمال مهمة
+     */
+    completeTask(section, taskId) {
+        if (!this.currentUser) return false;
+
+        // التحقق من أن المهمة لم تكتمل من قبل
+        let completedList;
+        switch(section) {
+            case 'think':
+                completedList = this.currentUser.completedQuestions || [];
+                if (completedList.includes(taskId)) return false;
+                completedList.push(taskId);
+                this.currentUser.completedQuestions = completedList;
+                break;
+            case 'design':
+                completedList = this.currentUser.completedDesignTasks || [];
+                if (completedList.includes(taskId)) return false;
+                completedList.push(taskId);
+                this.currentUser.completedDesignTasks = completedList;
+                break;
+            case 'ai':
+                completedList = this.currentUser.completedAITasks || [];
+                if (completedList.includes(taskId)) return false;
+                completedList.push(taskId);
+                this.currentUser.completedAITasks = completedList;
+                break;
+            case 'projects':
+                completedList = this.currentUser.completedProjects || [];
+                if (completedList.includes(taskId)) return false;
+                completedList.push(taskId);
+                this.currentUser.completedProjects = completedList;
+                break;
+            default:
+                return false;
+        }
+
+        this.currentUser.completedTasks = (this.currentUser.completedTasks || 0) + 1;
+        
+        // تحديث التقدم
+        const totalTasks = 30; // كل قسم يحتوي على 30 مهمة
+        const progress = Math.floor((completedList.length / totalTasks) * 100);
+        this.updateProgress(section, progress);
+        
+        // منح نقاط
+        this.addPoints(15, `إكمال مهمة في قسم ${this.getSectionName(section)}`);
+        
+        // تحديث الاستمرارية اليومية
+        this.updateStreak();
+        
+        // حفظ التغييرات
+        this.updateUser(this.currentUser);
+        
+        return true;
+    }
+
+    /**
+     * تحديث الاستمرارية اليومية
+     */
+    updateStreak() {
+        if (!this.currentUser) return;
+
+        const today = new Date().toDateString();
+        const lastLogin = new Date(this.currentUser.lastLogin).toDateString();
+        
+        if (today !== lastLogin) {
+            // التحقق إذا كان التوقف ليوم واحد فقط
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            if (lastLogin === yesterday.toDateString()) {
+                this.currentUser.streak = (this.currentUser.streak || 0) + 1;
+            } else {
+                this.currentUser.streak = 1;
+            }
+        }
+    }
+
+    /**
+     * إضافة إنجاز
+     */
+    addAchievement(achievementId, title, description) {
+        if (!this.currentUser) return;
+
+        const achievements = this.currentUser.achievements || [];
+        
+        // التحقق من أن الإنجاز غير مكتسب من قبل
+        if (achievements.some(a => a.id === achievementId)) {
+            return false;
+        }
+
+        const achievement = {
+            id: achievementId,
+            title: title,
+            description: description,
+            date: new Date().toISOString(),
+            icon: this.getAchievementIcon(achievementId)
+        };
+
+        achievements.push(achievement);
+        this.currentUser.achievements = achievements;
+        
+        // منح نقاط للإنجاز
+        this.addPoints(50, `إنجاز: ${title}`);
+        
+        this.updateUser({ achievements: achievements });
+        
+        // عرض رسالة الإنجاز
+        this.showAchievementNotification(achievement);
+        
+        return true;
+    }
+
+    /**
+     * الحصول على اسم القسم بالعربية
+     */
+    getSectionName(section) {
+        const sections = {
+            'think': 'أفكر',
+            'design': 'أصمم',
+            'ai': 'الذكاء الاصطناعي',
+            'projects': 'المشاريع'
+        };
+        return sections[section] || section;
+    }
+
+    /**
+     * الحصول على أيقونة الإنجاز
+     */
+    getAchievementIcon(achievementId) {
+        const icons = {
+            'first_login': '🎯',
+            'first_task': '✅',
+            'think_master': '🧠',
+            'design_master': '🎨',
+            'ai_master': '🤖',
+            'project_master': '🧩',
+            'week_streak': '🔥',
+            'month_streak': '⭐',
+            'fast_learner': '⚡',
+            'perfect_score': '💯'
+        };
+        return icons[achievementId] || '🏆';
+    }
+
+    /**
+     * تسجيل الخروج
+     */
+    logout() {
+        if (!confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+            return;
+        }
+
+        this.clearSession();
+        window.location.href = '../index.html';
+    }
+
+    /**
+     * مسح الجلسة الحالية
+     */
+    clearSession() {
+        localStorage.removeItem('refaat_current_user');
+        this.currentUser = null;
+    }
+
+    /**
+     * الحصول على المستخدم الحالي
+     */
+    getCurrentUser() {
+        return this.currentUser;
+    }
+
+    /**
+     * الحصول على إحصائيات المستخدم
+     */
+    getUserStats() {
+        if (!this.currentUser) return null;
+
+        return {
+            name: this.currentUser.name,
+            level: this.currentUser.level,
+            points: this.currentUser.points,
+            completedTasks: this.currentUser.completedTasks || 0,
+            streak: this.currentUser.streak || 0,
+            achievements: this.currentUser.achievements?.length || 0,
+            progress: this.currentUser.progress || {},
+            joinDate: this.currentUser.joinDate,
+            lastLogin: this.currentUser.lastLogin
+        };
+    }
+
+    /**
+     * عرض زر الاستمرار
+     */
+    showContinueButton() {
+        const continueButton = document.getElementById('continueButton');
+        const startButton = document.getElementById('startButton');
+        
+        if (continueButton && startButton) {
+            continueButton.style.display = 'flex';
+            startButton.textContent = 'بداية جديدة';
+        }
+    }
+
+    /**
+     * عرض شاشة التحميل
+     */
+    showLoading() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('active');
+        }
+    }
+
+    /**
+     * إخفاء شاشة التحميل
+     */
+    hideLoading() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.classList.remove('active');
+        }
+    }
+
+    /**
+     * عرض رسالة ترحيب
+     */
+    showWelcomeMessage(name) {
+        const welcomeContent = document.querySelector('.welcome-content');
+        if (welcomeContent) {
+            welcomeContent.innerHTML = `
+                <div class="welcome-message animate-fadeIn">
+                    <div class="success-celebration">
+                        <div class="celebration-icon">🎉</div>
+                    </div>
+                    <h2 class="greeting">أهلاً وسهلاً ${name}!</h2>
+                    <p class="sub-greeting">نحن سعداء بانضمامك إلى عائلة Refaat Courses</p>
+                    <div class="loading-indicator">
+                        <div class="spinner"></div>
+                        <p>نُحضر عالم التعلم المدهش لك...</p>
+                        <div class="loading-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    /**
+     * عرض رسالة النقاط
+     */
+    showPointsAnimation(points, reason) {
+        // إنشاء عنصر الرسوم المتحركة للنقاط
+        const pointsElement = document.createElement('div');
+        pointsElement.className = 'points-animation';
+        pointsElement.innerHTML = `
+            <div class="points-content">
+                <span class="points-icon">⭐</span>
+                <span class="points-text">+${points} نقطة</span>
+                ${reason ? `<span class="points-reason">${reason}</span>` : ''}
+            </div>
+        `;
+        
+        document.body.appendChild(pointsElement);
+        
+        // إزالة العنصر بعد انتهاء الرسوم المتحركة
+        setTimeout(() => {
+            pointsElement.remove();
+        }, 3000);
+    }
+
+    /**
+     * عرض رسالة الترقية في المستوى
+     */
+    showLevelUpAnimation() {
+        const levelUpElement = document.createElement('div');
+        levelUpElement.className = 'level-up-animation';
+        levelUpElement.innerHTML = `
+            <div class="level-up-content">
+                <div class="level-up-icon">🎯</div>
+                <h3 class="level-up-title">تهانينا!</h3>
+                <p class="level-up-text">لقد وصلت إلى المستوى ${this.currentUser.level}!</p>
+                <div class="level-up-confetti"></div>
+            </div>
+        `;
+        
+        document.body.appendChild(levelUpElement);
+        
+        setTimeout(() => {
+            levelUpElement.remove();
+        }, 4000);
+    }
+
+    /**
+     * عرض إشعار الإنجاز
+     */
+    showAchievementNotification(achievement) {
+        const notification = document.createElement('div');
+        notification.className = 'achievement-notification animate-slideInRight';
+        notification.innerHTML = `
+            <div class="achievement-notification-content">
+                <div class="achievement-icon">${achievement.icon}</div>
+                <div class="achievement-details">
+                    <h4>إنجاز جديد! 🏆</h4>
+                    <h5>${achievement.title}</h5>
+                    <p>${achievement.description}</p>
+                </div>
+                <button class="close-notification">×</button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // إضافة حدث الإغلاق
+        const closeBtn = notification.querySelector('.close-notification');
+        closeBtn.addEventListener('click', () => {
+            notification.remove();
+        });
+        
+        // إزالة تلقائية بعد 5 ثوانٍ
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 5000);
+    }
+
+    /**
+     * عرض رسالة خطأ
+     */
+    showError(message) {
+        // إنشاء عنصر رسالة الخطأ
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message animate-shake';
+        errorElement.innerHTML = `
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <span class="error-text">${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(errorElement);
+        
+        // إزالة الرسالة بعد 3 ثوانٍ
+        setTimeout(() => {
+            if (errorElement.parentNode) {
+                errorElement.remove();
+            }
+        }, 3000);
+    }
+
+    /**
+     * التوجيه إلى لوحة التحكم
+     */
+    redirectToDashboard() {
+        this.hideLoading();
+        window.location.href = 'pages/dashboard.html';
+    }
+
+    /**
+     * التوجيه إلى صفحة معينة
+     */
+    redirectToPage(page) {
+        window.location.href = `pages/${page}.html`;
+    }
+
+    /**
+     * تحديث عرض المستخدم في الواجهة
+     */
+    updateUserUI() {
+        if (!this.currentUser) return;
+
+        // تحديث اسم المستخدم في جميع العناصر
+        const nameElements = document.querySelectorAll('.user-name');
+        nameElements.forEach(el => {
+            el.textContent = this.currentUser.name;
+        });
+
+        // تحديث المستوى
+        const levelElements = document.querySelectorAll('.user-level');
+        levelElements.forEach(el => {
+            el.textContent = `المستوى ${this.currentUser.level}`;
+        });
+
+        // تحديث النقاط
+        const pointsElements = document.querySelectorAll('.user-points');
+        pointsElements.forEach(el => {
+            el.textContent = `⭐ ${this.currentUser.points}`;
+        });
+
+        // تحديث الصورة الرمزية
+        const avatarElements = document.querySelectorAll('.avatar');
+        avatarElements.forEach(el => {
+            el.textContent = this.currentUser.avatar;
+        });
+
+        // تحديث الإحصائيات
+        this.updateStatsUI();
+    }
+
+    /**
+     * تحديث عرض الإحصائيات
+     */
+    updateStatsUI() {
+        if (!this.currentUser) return;
+
+        const stats = this.getUserStats();
+        if (!stats) return;
+
+        // تحديث المهام المكتملة
+        const completedTasksEl = document.getElementById('completedTasks');
+        if (completedTasksEl) {
+            completedTasksEl.textContent = stats.completedTasks;
+        }
+
+        // تحديث النقاط الإجمالية
+        const totalPointsEl = document.getElementById('totalPoints');
+        if (totalPointsEl) {
+            totalPointsEl.textContent = stats.points;
+        }
+
+        // تحديث الاستمرارية
+        const currentStreakEl = document.getElementById('currentStreak');
+        if (currentStreakEl) {
+            currentStreakEl.textContent = stats.streak;
+        }
+
+        // تحديث الإنجازات
+        const achievementsCountEl = document.getElementById('achievementsCount');
+        if (achievementsCountEl) {
+            achievementsCountEl.textContent = stats.achievements;
+        }
+
+        // تحديث شريط التقدم الأسبوعي
+        this.updateWeeklyProgress();
+    }
+
+    /**
+     * تحديث شريط التقدم الأسبوعي
+     */
+    updateWeeklyProgress() {
+        if (!this.currentUser) return;
+
+        const totalTasks = 120; // 30 مهمة × 4 أقسام
+        const completedTasks = this.currentUser.completedTasks || 0;
+        const progress = Math.min(100, Math.floor((completedTasks / totalTasks) * 100));
+
+        const progressBar = document.getElementById('weekProgress');
+        const progressText = document.querySelector('.progress-text');
+        
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        if (progressText) {
+            progressText.textContent = `${progress}% مكتمل`;
+        }
+
+        // تحديث تقدم الأقسام
+        this.updateSectionProgress();
+    }
+
+    /**
+     * تحديث تقدم الأقسام
+     */
+    updateSectionProgress() {
+        if (!this.currentUser || !this.currentUser.progress) return;
+
+        const sections = ['think', 'design', 'ai', 'projects'];
+        sections.forEach(section => {
+            const progress = this.currentUser.progress[section] || 0;
+            const progressBar = document.querySelector(`.progress-${section}`);
+            const progressPercent = document.querySelector(`.progress-percent[data-section="${section}"]`);
+            
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            if (progressPercent) {
+                progressPercent.textContent = `${progress}% مكتمل`;
+            }
+        });
+    }
 }
 
-// تصدير الدوال
-if (typeof window !== 'undefined') {
-    window.initializeAISection = initializeAISection;
-    window.loadAITasks = loadAITasks;
-    window.completeAITask = completeAITask;
+// تهيئة مدير المصادقة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+    window.authManager = new AuthManager();
+    
+    // تحديث الواجهة إذا كان هناك مستخدم نشط
+    if (window.authManager.currentUser) {
+        window.authManager.updateUserUI();
+    }
+});
+
+// تصدير المدير للاستخدام في ملفات أخرى
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = AuthManager;
 }
