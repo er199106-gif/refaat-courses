@@ -1,1 +1,54 @@
-
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title_ar": "كتابة قصة قصيرة",
+      "title_en": "Write a Short Story",
+      "description_ar": "اطلب من الذكاء الاصطناعي كتابة قصة عن صديق جديد",
+      "description_en": "Ask AI to write a story about a new friend",
+      "prompt_ar": "اكتب قصة قصيرة عن طفل التقى بصديق جديد في الحديقة وعاشا مغامرة ممتعة",
+      "prompt_en": "Write a short story about a child who met a new friend in the park and had a fun adventure",
+      "points": 20
+    },
+    {
+      "id": 2,
+      "title_ar": "شرح مفهوم علمي",
+      "title_en": "Explain Scientific Concept",
+      "description_ar": "اطلب شرح مبسط لظاهرة قوس قزح",
+      "description_en": "Ask for a simple explanation of rainbow phenomenon",
+      "prompt_ar": "اشرح لي بطريقة بسيطة كيف يتكون قوس قزح في السماء بعد المطر؟",
+      "prompt_en": "Explain to me in a simple way how a rainbow forms in the sky after rain?",
+      "points": 25
+    },
+    {
+      "id": 3,
+      "title_ar": "إنشاء نص شعري",
+      "title_en": "Create a Poem",
+      "description_ar": "اطلب قصيدة عن الفصول الأربعة",
+      "description_en": "Ask for a poem about the four seasons",
+      "prompt_ar": "اكتب قصيدة قصيرة عن الفصول الأربعة وجمال كل فصل",
+      "prompt_en": "Write a short poem about the four seasons and the beauty of each season",
+      "points": 30
+    },
+    {
+      "id": 4,
+      "title_ar": "حل مشكلة رياضية",
+      "title_en": "Solve Math Problem",
+      "description_ar": "اطلب مساعدة في حل مسألة رياضية",
+      "description_en": "Ask for help solving a math problem",
+      "prompt_ar": "ساعدني في حل هذه المسألة: إذا كان لدى أحمد 5 تفاحات وأعطى صديقه 2، كم تفاحة بقيت معه؟",
+      "prompt_en": "Help me solve this problem: If Ahmed has 5 apples and gives 2 to his friend, how many apples does he have left?",
+      "points": 20
+    },
+    {
+      "id": 5,
+      "title_ar": "ترجمة جملة",
+      "title_en": "Translate a Sentence",
+      "description_ar": "اطلب ترجمة جملة من العربية إلى الإنجليزية",
+      "description_en": "Ask to translate a sentence from Arabic to English",
+      "prompt_ar": "ترجم هذه الجملة إلى الإنجليزية: 'العلم نور والجهل ظلام'",
+      "prompt_en": "Translate this sentence to Arabic: 'Knowledge is light and ignorance is darkness'",
+      "points": 25
+    }
+  ]
+}
