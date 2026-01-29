@@ -1,59 +1,198 @@
 <svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="cert-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6C63FF" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#4A44D6" stop-opacity="0.9"/>
+    <!-- تدرجات حديثة -->
+    <linearGradient id="main-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="50%" stop-color="#74EBD5"/>
+      <stop offset="100%" stop-color="#FFE066"/>
     </linearGradient>
-    <pattern id="star-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M20 5 L23 12 L30 12 L25 17 L26 24 L20 20 L14 24 L15 17 L10 12 L17 12 Z" fill="white" opacity="0.2"/>
+    
+    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#FFA500"/>
+    </linearGradient>
+    
+    <linearGradient id="trophy-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A67C00"/>
+    </linearGradient>
+    
+    <!-- نمط نجوم -->
+    <pattern id="stars-pattern" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M25 10 L27 15 L32 15 L28 18 L29 24 L25 21 L21 24 L22 18 L18 15 L23 15 Z" fill="white" opacity="0.15"/>
     </pattern>
+    
+    <!-- تأثير توهج -->
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
-      <feFlood flood-color="#FFE066" result="glowColor"/>
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#FFE066" flood-opacity="0.5" result="glowColor"/>
       <feComposite in="glowColor" in2="blur" operator="in" result="softGlow"/>
       <feBlend in="SourceGraphic" in2="softGlow" mode="screen"/>
     </filter>
+    
+    <!-- تأثير ظل -->
+    <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- خطوط مخصصة -->
+    <style type="text/css">
+      @font-face {
+        font-family: 'VEXA';
+        src: url('../assets/fonts/VEXA-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'MusketBold';
+        src: url('../assets/fonts/MusketBold.woff2') format('woff2');
+      }
+    </style>
   </defs>
   
-  <!-- الخلفية بتدرج -->
-  <rect width="800" height="600" fill="url(#cert-gradient)"/>
+  <!-- الخلفية الرئيسية بتدرج ثلاثي الألوان -->
+  <rect width="800" height="600" fill="url(#main-gradient)"/>
   
-  <!-- نمط النجوم -->
-  <rect width="800" height="600" fill="url(#star-pattern)"/>
+  <!-- نمط النجوم الخفيف -->
+  <rect width="800" height="600" fill="url(#stars-pattern)"/>
   
-  <!-- الإطار الذهبي -->
-  <rect x="30" y="30" width="740" height="540" rx="20" fill="none" stroke="#FFE066" stroke-width="8" stroke-dasharray="30 15"/>
+  <!-- دائرة مركزية زخرفية -->
+  <circle cx="400" cy="300" r="280" fill="none" stroke="white" stroke-width="2" stroke-dasharray="10 5" opacity="0.3"/>
+  <circle cx="400" cy="300" r="260" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
   
-  <!-- الشعار العلوي -->
-  <text x="400" y="100" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="white" filter="url(#glow)">Refaat Courses</text>
+  <!-- الكأس الذهبي في الأعلى -->
+  <g transform="translate(400, 100)" filter="url(#glow)">
+    <!-- قاعدة الكأس -->
+    <ellipse cx="0" cy="60" rx="35" ry="15" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- جسم الكأس -->
+    <path d="M-25 0 Q-35 -40 0 -60 Q35 -40 25 0 L15 40 Q0 50 -15 40 Z" fill="url(#trophy-gradient)" stroke="#8B4513" stroke-width="3"/>
+    
+    <!-- مقبض الكأس -->
+    <path d="M-20 10 Q-30 20 -25 35 Q-15 45 -5 40 L-5 20 Q-10 25 -15 20 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    <path d="M20 10 Q30 20 25 35 Q15 45 5 40 L5 20 Q10 25 15 20 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- نجمة على الكأس -->
+    <path d="M0 -60 L3 -55 L8 -55 L5 -50 L6 -45 L0 -48 L-6 -45 L-5 -50 L-10 -55 L-3 -55 Z" fill="#FFE066" stroke="white" stroke-width="1"/>
+  </g>
   
-  <!-- النص الرئيسي -->
-  <text x="400" y="220" font-family="Arial, sans-serif" font-size="36" text-anchor="middle" fill="white" font-weight="bold">شهادة إتمام</text>
+  <!-- الشعار العلوي بالإنجليزية -->
+  <text x="400" y="180" font-family="MusketBold, Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="2">
+    <tspan>Refaat Courses</tspan>
+  </text>
   
-  <!-- خط فاصل -->
-  <line x1="200" y1="250" x2="600" y2="250" stroke="white" stroke-width="3" stroke-dasharray="10 5"/>
+  <!-- الشعار العلوي بالعربية -->
+  <text x="400" y="215" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="1">
+    <tspan>منصة رفاعي التعليمية</tspan>
+  </text>
   
-  <!-- اسم الطفل -->
-  <text x="400" y="320" font-family="Arial, sans-serif" font-size="42" text-anchor="middle" fill="#FFE066" font-weight="bold" id="cert-name">اسم الطفل</text>
+  <!-- خط فاصل مزخرف -->
+  <path d="M200 240 L350 240 M450 240 L600 240" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="400" cy="240" r="8" fill="#FFE066"/>
   
-  <!-- نص التفاصيل -->
-  <text x="400" y="380" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">لإكماله بنجاح جميع مهام الشهر الأول</text>
-  <text x="400" y="420" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="white">بتفوق وإبداع ملحوظ</text>
+  <!-- العنوان الرئيسي بالإنجليزية -->
+  <text x="400" y="290" font-family="MusketBold, Arial, sans-serif" font-size="28" text-anchor="middle" fill="white" font-weight="bold">
+    <tspan>CERTIFICATE OF ACHIEVEMENT</tspan>
+  </text>
   
-  <!-- النجوم الزخرفية -->
-  <path d="M150 480 L156 492 L170 492 L159 500 L162 514 L150 506 L138 514 L141 500 L130 492 L144 492 Z" fill="#FFE066" stroke="white" stroke-width="1.5"/>
-  <path d="M650 480 L656 492 L670 492 L659 500 L662 514 L650 506 L638 514 L641 500 L630 492 L644 492 Z" fill="#FFE066" stroke="white" stroke-width="1.5"/>
+  <!-- العنوان الرئيسي بالعربية -->
+  <text x="400" y="325" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="30" text-anchor="middle" fill="white" font-weight="bold">
+    <tspan>شهادة إتمام وإنجاز</tspan>
+  </text>
   
-  <!-- التوقيعات -->
-  <line x1="200" y1="520" x2="350" y2="520" stroke="white" stroke-width="2"/>
-  <line x1="450" y1="520" x2="600" y2="520" stroke="white" stroke-width="2"/>
-  <text x="275" y="545" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="white">ولي الأمر</text>
-  <text x="525" y="545" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="white">المنصة التعليمية</text>
+  <!-- نص "يمنح لـ" بالإنجليزية -->
+  <text x="400" y="380" font-family="MusketBold, Arial, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.9">
+    <tspan>This Certificate is Presented to</tspan>
+  </text>
   
-  <!-- التاريخ -->
-  <text x="400" y="580" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#74EBD5">يناير ٢٠٢٦</text>
+  <!-- نص "يمنح لـ" بالعربية -->
+  <text x="400" y="405" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="20" text-anchor="middle" fill="white" opacity="0.9">
+    <tspan>تُمنح هذه الشهادة إلى</tspan>
+  </text>
   
-  <!-- الشريط السفلي -->
-  <rect x="0" y="570" width="800" height="30" fill="#FFE066"/>
-  <text x="400" y="592" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#6C63FF" font-weight="bold">© 2026 ER1991. All Rights Reserved.</text>
+  <!-- اسم الطفل (مكان فارغ للتعبئة) -->
+  <rect x="200" y="420" width="400" height="60" rx="10" fill="white" opacity="0.2" stroke="#FFE066" stroke-width="3" stroke-dasharray="5 5"/>
+  <text x="400" y="460" font-family="MusketBold, Arial, sans-serif" font-size="32" text-anchor="middle" fill="white" font-weight="bold" id="cert-name">
+    <tspan>[اسم الطفل]</tspan>
+  </text>
+  
+  <!-- نص الإنجاز بالإنجليزية -->
+  <text x="400" y="510" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>For successfully completing all monthly challenges</tspan>
+  </text>
+  <text x="400" y="530" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>with creativity, dedication, and excellence</tspan>
+  </text>
+  
+  <!-- نص الإنجاز بالعربية -->
+  <text x="400" y="560" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>لإتمامه جميع التحديات الشهرية بإبداع وتميز</tspan>
+  </text>
+  
+  <!-- النجوم الزخرفية حول الاسم -->
+  <path d="M150 450 L154 458 L162 458 L156 463 L157 472 L150 467 L143 472 L144 463 L138 458 L146 458 Z" fill="#FFE066" stroke="white" stroke-width="1" opacity="0.9"/>
+  <path d="M650 450 L654 458 L662 458 L656 463 L657 472 L650 467 L643 472 L644 463 L638 458 L646 458 Z" fill="#FFE066" stroke="white" stroke-width="1" opacity="0.9"/>
+  
+  <!-- شريط التوقيعات -->
+  <g transform="translate(0, 50)">
+    <!-- خط التوقيع الأيسر -->
+    <line x1="150" y1="530" x2="300" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="225" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Parent's Signature</text>
+    <text x="225" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">توقيع ولي الأمر</text>
+    
+    <!-- خط التوقيع الأيمن -->
+    <line x1="500" y1="530" x2="650" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="575" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Platform Director</text>
+    <text x="575" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">مدير المنصة</text>
+  </g>
+  
+  <!-- الميدالية في الأسفل -->
+  <g transform="translate(400, 550)" filter="url(#drop-shadow)">
+    <circle cx="0" cy="0" r="35" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="3"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="white" stroke-width="2" stroke-dasharray="4 2"/>
+    <path d="M0 -20 L6 -10 L15 -15 L10 0 L15 15 L6 10 L0 20 L-6 10 L-15 15 L-10 0 L-15 -15 L-6 -10 Z" fill="#6C63FF" stroke="white" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="10" fill="#FFE066" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- النجوم الطائرة حول الكأس -->
+  <g opacity="0.7">
+    <path d="M300 80 L303 85 L308 85 L305 89 L306 95 L300 91 L294 95 L295 89 L290 85 L297 85 Z" fill="#FFFFFF"/>
+    <path d="M500 80 L503 85 L508 85 L505 89 L506 95 L500 91 L494 95 L495 89 L490 85 L497 85 Z" fill="#FFFFFF"/>
+    <path d="M350 130 L353 135 L358 135 L355 139 L356 145 L350 141 L344 145 L345 139 L340 135 L347 135 Z" fill="#FFFFFF"/>
+    <path d="M450 130 L453 135 L458 135 L455 139 L456 145 L450 141 L444 145 L445 139 L440 135 L447 135 Z" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- الشريط السفلي الذهبي -->
+  <rect x="0" y="570" width="800" height="30" fill="url(#gold-gradient)"/>
+  
+  <!-- النص السفلي بالإنجليزية -->
+  <text x="200" y="592" font-family="MusketBold, Arial, sans-serif" font-size="12" text-anchor="start" fill="#6C63FF" font-weight="bold">
+    <tspan>© 2026 ER199. All Rights Reserved.</tspan>
+  </text>
+  
+  <!-- النص السفلي بالعربية -->
+  <text x="600" y="592" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="12" text-anchor="end" fill="#6C63FF" font-weight="bold">
+    <tspan>جميع الحقوق محفوظة © ٢٠٢٦ ER1991</tspan>
+  </text>
+  
+  <!-- الأيقونة الصغيرة في الزاوية -->
+  <g transform="translate(50, 550)" opacity="0.8">
+    <circle cx="0" cy="0" r="15" fill="#FFE066" stroke="#6C63FF" stroke-width="2"/>
+    <path d="M-5 -5 L5 -5 L0 5 Z" fill="#6C63FF"/>
+  </g>
+  
+  <!-- أيقونة في الزاوية الأخرى -->
+  <g transform="translate(750, 550)" opacity="0.8">
+    <circle cx="0" cy="0" r="15" fill="#74EBD5" stroke="#6C63FF" stroke-width="2"/>
+    <path d="M-5 0 L5 0 L0 -5 Z" fill="#6C63FF"/>
+  </g>
+  
+  <!-- شكل هندسي زخرفي في الخلفية -->
+  <path d="M400 300 L430 330 L400 360 L370 330 Z" fill="none" stroke="white" stroke-width="1" opacity="0.1" transform="scale(8)"/>
 </svg>
