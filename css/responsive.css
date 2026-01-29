@@ -1,1 +1,256 @@
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 768px) {
+    :root {
+        --radius-sm: 6px;
+        --radius-md: 12px;
+        --radius-lg: 20px;
+    }
+    
+    .welcome-container {
+        padding-top: 20px;
+        max-width: 100%;
+    }
+    
+    .logo-container h1 {
+        font-size: 2.2rem;
+    }
+    
+    .logo-icon {
+        font-size: 3.5rem;
+    }
+    
+    .welcome-form {
+        padding: 25px 20px;
+        margin-top: 15px;
+    }
+    
+    .welcome-form h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    #child-name {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+        padding: 12px 30px;
+        font-size: 1.2rem;
+    }
+    
+    .main-header {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .child-name {
+        font-size: 1.3rem;
+    }
+    
+    .points-container {
+        padding: 6px 15px;
+        font-size: 1.1rem;
+    }
+    
+    .sections-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    
+    .section-card {
+        padding: 20px 10px;
+    }
+    
+    .section-icon {
+        font-size: 2rem;
+    }
+    
+    .section-card h3 {
+        font-size: 1.15rem;
+    }
+    
+    .section-card p {
+        font-size: 0.85rem;
+    }
+    
+    .floating-ai {
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .ai-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .section-content {
+        max-width: 95%;
+        margin: 0 10px;
+    }
+    
+    .close-section {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
 
+/* شاشات صغيرة جداً */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .welcome-container {
+        padding-top: 10px;
+    }
+    
+    .logo-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo-icon {
+        font-size: 3rem;
+    }
+    
+    .welcome-form h2 {
+        font-size: 1.4rem;
+    }
+    
+    #child-name {
+        padding: 10px;
+        font-size: 1rem;
+    }
+    
+    .btn-primary {
+        padding: 10px 25px;
+        font-size: 1.1rem;
+    }
+    
+    .language-toggle {
+        gap: 5px;
+        font-size: 0.85rem;
+    }
+    
+    .switch {
+        width: 50px;
+        height: 28px;
+    }
+    
+    .slider:before {
+        height: 20px;
+        width: 20px;
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(22px);
+    }
+    
+    .sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .section-card {
+        padding: 18px 8px;
+    }
+    
+    .section-icon {
+        font-size: 1.8rem;
+    }
+    
+    .section-card h3 {
+        font-size: 1rem;
+    }
+    
+    .section-card p {
+        font-size: 0.8rem;
+    }
+    
+    .progress-bar {
+        height: 8px;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+        padding-top: 15px;
+    }
+}
+
+/* تحسينات للوحات والتابلت */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sections-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .parent-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* شاشات كبيرة */
+@media (min-width: 1025px) {
+    body {
+        padding: 0 20px;
+    }
+    
+    .welcome-container {
+        max-width: 600px;
+    }
+    
+    .sections-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .floating-ai {
+        bottom: 40px;
+        left: 40px;
+    }
+}
+
+/* وضع التصميم الليلي (اختياري) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark: #F8F9FA;
+        --light: #2D2D44;
+    }
+    
+    body {
+        background: var(--light);
+        color: var(--dark);
+    }
+    
+    .welcome-form,
+    .main-header,
+    .section-card,
+    .section-content,
+    .stat-card,
+    .weekly-chart {
+        background: #3a3a5a;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .option-btn {
+        background: #4a4a6a;
+        border-color: #5a5a7a;
+        color: var(--dark);
+    }
+    
+    .option-btn:hover {
+        background: var(--secondary);
+    }
+}
