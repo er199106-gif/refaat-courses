@@ -1,65 +1,75 @@
 <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- الخلفية الدائرية -->
-  <circle cx="200" cy="200" r="180" fill="url(#gradient-bg)"/>
-  
-  <!-- التدرج -->
   <defs>
-    <linearGradient id="gradient-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6C63FF" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="#74EBD5" stop-opacity="0.2"/>
+    <linearGradient id="skin-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD3B6"/>
+      <stop offset="100%" stop-color="#FFB69D"/>
     </linearGradient>
-    
-    <!-- تدرج للشخصية -->
-    <linearGradient id="character-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FF9E6D"/>
-      <stop offset="100%" stop-color="#FF6B6B"/>
+    <linearGradient id="hair-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5D4037"/>
+      <stop offset="100%" stop-color="#3E2723"/>
+    </linearGradient>
+    <linearGradient id="clothing-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="100%" stop-color="#4A44D6"/>
     </linearGradient>
   </defs>
   
-  <!-- الجسم -->
-  <ellipse cx="200" cy="240" rx="80" ry="100" fill="url(#character-gradient)" stroke="#555" stroke-width="3"/>
+  <!-- الخلفية -->
+  <rect width="400" height="400" fill="#F0F7FF"/>
+  
+  <!-- الجسم الرئيسي -->
+  <ellipse cx="200" cy="260" rx="85" ry="100" fill="url(#skin-gradient)"/>
   
   <!-- الرأس -->
-  <circle cx="200" cy="140" r="65" fill="#FFD3B6" stroke="#555" stroke-width="3"/>
-  
-  <!-- العيون -->
-  <circle cx="180" cy="130" r="15" fill="#555"/>
-  <circle cx="220" cy="130" r="15" fill="#555"/>
-  <circle cx="183" cy="128" r="7" fill="white"/>
-  <circle cx="223" cy="128" r="7" fill="white"/>
-  
-  <!-- الحاجبان -->
-  <path d="M165 115 Q180 105 190 110" stroke="#555" stroke-width="4" fill="none"/>
-  <path d="M210 110 Q220 105 235 115" stroke="#555" stroke-width="4" fill="none"/>
-  
-  <!-- الفم -->
-  <path d="M180 155 Q200 170 220 155" stroke="#555" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="200" cy="150" r="65" fill="url(#skin-gradient)"/>
   
   <!-- الشعر -->
-  <path d="M150 90 Q200 40 250 90 Q240 110 230 120 Q200 125 170 120 Q160 110 150 90" fill="#7B68EE" stroke="#555" stroke-width="3"/>
+  <path d="M150 100 Q180 60 250 100 Q240 120 230 130 Q200 135 170 130 Q160 120 150 100" fill="url(#hair-gradient)"/>
   
-  <!-- الذراع الأيسر -->
-  <path d="M125 240 Q90 280 100 320" stroke="#FFD3B6" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <!-- العيون -->
+  <circle cx="170" cy="135" r="15" fill="white" stroke="#333" stroke-width="2"/>
+  <circle cx="230" cy="135" r="15" fill="white" stroke="#333" stroke-width="2"/>
+  <circle cx="175" cy="132" r="8" fill="#333"/>
+  <circle cx="235" cy="132" r="8" fill="#333"/>
+  <circle cx="178" cy="128" r="3" fill="white"/>
+  <circle cx="238" cy="128" r="3" fill="white"/>
   
-  <!-- الذراع الأيمن -->
-  <path d="M275 240 Q310 280 300 320" stroke="#FFD3B6" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <!-- الحاجبان -->
+  <path d="M160 120 Q170 110 180 115" stroke="#333" stroke-width="3" fill="none"/>
+  <path d="M220 115 Q230 110 240 120" stroke="#333" stroke-width="3" fill="none"/>
   
-  <!-- اليد اليسرى (تحمل كتاب) -->
-  <rect x="70" y="300" width="40" height="30" rx="5" fill="#6C63FF" stroke="#555" stroke-width="2"/>
-  <rect x="75" y="305" width="30" height="20" fill="white" stroke="#555" stroke-width="1"/>
-  <circle cx="80" cy="310" r="2" fill="#6C63FF"/>
-  <circle cx="90" cy="310" r="2" fill="#6C63FF"/>
-  <circle cx="100" cy="310" r="2" fill="#6C63FF"/>
+  <!-- الفم -->
+  <path d="M180 160 Q200 175 220 160" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
   
-  <!-- اليد اليمنى (تشير لأعلى) -->
-  <circle cx="300" cy="310" r="15" fill="#FFD3B6" stroke="#555" stroke-width="2"/>
-  <path d="M300 295 L300 270 L310 260" stroke="#555" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- القميص -->
+  <path d="M130 200 L270 200 L250 250 L150 250 Z" fill="url(#clothing-gradient)"/>
+  <path d="M170 200 L150 250" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+  <path d="M230 200 L250 250" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+  <circle cx="200" cy="225" r="5" fill="white"/>
   
-  <!-- النجوم المحيطة -->
-  <path d="M50 80 L55 90 L65 90 L58 97 L60 107 L50 102 L40 107 L42 97 L35 90 L45 90 Z" fill="#FFE066" stroke="#555" stroke-width="1"/>
-  <path d="M350 70 L355 80 L365 80 L358 87 L360 97 L350 92 L340 97 L342 87 L335 80 L345 80 Z" fill="#FFE066" stroke="#555" stroke-width="1"/>
-  <path d="M320 320 L325 330 L335 330 L328 337 L330 347 L320 342 L310 347 L312 337 L305 330 L315 330 Z" fill="#74EBD5" stroke="#555" stroke-width="1"/>
+  <!-- الذراعان -->
+  <path d="M100 210 Q70 240 70 270" stroke="url(#skin-gradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <path d="M300 210 Q330 240 330 270" stroke="url(#skin-gradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
   
-  <!-- نص ترحيبي -->
-  <text x="200" y="370" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#6C63FF">مرحباً بك!</text>
+  <!-- الأرجل -->
+  <path d="M150 280 L130 330" stroke="url(#skin-gradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <path d="M250 280 L270 330" stroke="url(#skin-gradient)" stroke-width="25" fill="none" stroke-linecap="round"/>
+  
+  <!-- الحذاء -->
+  <ellipse cx="130" cy="335" rx="20" ry="10" fill="#3E2723"/>
+  <ellipse cx="270" cy="335" rx="20" ry="10" fill="#3E2723"/>
+  
+  <!-- الرسوم التوضيحية -->
+  <g transform="translate(100, 100)">
+    <circle cx="0" cy="0" r="15" fill="#74EBD5" stroke="#6C63FF" stroke-width="2"/>
+    <text x="0" y="5" font-family="VEXA, 'Segoe UI', Tahoma" font-size="12" text-anchor="middle" fill="white">١</text>
+  </g>
+  <g transform="translate(300, 100)">
+    <circle cx="0" cy="0" r="15" fill="#74EBD5" stroke="#6C63FF" stroke-width="2"/>
+    <text x="0" y="5" font-family="VEXA, 'Segoe UI', Tahoma" font-size="12" text-anchor="middle" fill="white">٢</text>
+  </g>
+  <g transform="translate(200, 350)">
+    <circle cx="0" cy="0" r="15" fill="#74EBD5" stroke="#6C63FF" stroke-width="2"/>
+    <text x="0" y="5" font-family="VEXA, 'Segoe UI', Tahoma" font-size="12" text-anchor="middle" fill="white">٣</text>
+  </g>
 </svg>
