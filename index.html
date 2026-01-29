@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refaat Courses - منصة تعليمية تفاعلية</title>
+    <!-- خطوط مخصصة -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- شاشة الترحيب -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-container">
+            <div class="logo-container">
+                <div class="logo-icon">🎓</div>
+                <h1>Refaat Courses</h1>
+            </div>
+            <div class="welcome-animation">
+                <div class="character"></div>
+            </div>
+            <div class="welcome-form">
+                <h2>مرحباً بك في عالم التعلم الممتع!</h2>
+                <input type="text" id="child-name" placeholder="أدخل اسمك هنا..." maxlength="15">
+                <button id="start-btn" class="btn-primary">ابدأ المغامرة</button>
+                <div class="language-toggle">
+                    <span>EN</span>
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span>AR</span>
+                </div>
+            </div>
+            <div class="copyright">© 2026 ER199. All Rights Reserved.</div>
+        </div>
+    </div>
 
+    <!-- لوحة التحكم الرئيسية -->
+    <div id="dashboard" class="screen">
+        <header class="main-header">
+            <div class="header-content">
+                <div class="user-info">
+                    <div class="avatar">👦</div>
+                    <div>
+                        <div class="child-name" id="dashboard-name">اسم الطفل</div>
+                        <div class="level">المستوى: <span id="current-level">1</span></div>
+                    </div>
+                </div>
+                <div class="points-container">
+                    <span class="points" id="total-points">0</span>
+                    <span class="star">⭐</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="weekly-progress"></div>
+            </div>
+        </header>
+
+        <main class="sections-grid">
+            <section class="section-card" data-section="think">
+                <div class="section-icon">🧠</div>
+                <h3>أفكر</h3>
+                <p>تحديات ذكاء ومنطق</p>
+            </section>
+            <section class="section-card" data-section="design">
+                <div class="section-icon">🎨</div>
+                <h3>أصمم</h3>
+                <p>إبداع وتصميم</p>
+            </section>
+            <section class="section-card" data-section="ai">
+                <div class="section-icon">🤖</div>
+                <h3>ذكاء اصطناعي</h3>
+                <p>تعلم مع AI</p>
+            </section>
+            <section class="section-card" data-section="projects">
+                <div class="section-icon">🧩</div>
+                <h3>المشاريع</h3>
+                <p>مشاريع ممتعة</p>
+            </section>
+            <section class="section-card" data-section="achievements">
+                <div class="section-icon">🏆</div>
+                <h3>الإنجازات</h3>
+                <p>معرض أعمالك</p>
+            </section>
+            <section class="section-card" data-section="parent">
+                <div class="section-icon">👨‍👩‍👦</div>
+                <h3>ولي الأمر</h3>
+                <p>تتبع التقدم</p>
+            </section>
+        </main>
+
+        <div class="floating-ai">
+            <button id="ai-helper-btn" class="ai-btn">🤖</button>
+        </div>
+    </div>
+
+    <!-- نوافذ الأقسام المختلفة -->
+    <div id="section-overlay" class="overlay">
+        <div class="section-content" id="section-content">
+            <!-- سيتم ملؤه ديناميكياً -->
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/think.js"></script>
+    <script src="js/design.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/parent.js"></script>
+</body>
+</html>
