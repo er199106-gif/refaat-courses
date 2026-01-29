@@ -12,155 +12,116 @@
       <stop offset="100%" stop-color="#FFA500"/>
     </linearGradient>
     
-    <linearGradient id="trophy-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D4AF37"/>
-      <stop offset="100%" stop-color="#A67C00"/>
-    </linearGradient>
-    
-    <!-- نمط نجوم -->
-    <pattern id="stars-pattern" width="50" height="50" patternUnits="userSpaceOnUse">
-      <path d="M25 10 L27 15 L32 15 L28 18 L29 24 L25 21 L21 24 L22 18 L18 15 L23 15 Z" fill="white" opacity="0.15"/>
-    </pattern>
-    
-    <!-- تأثير توهج -->
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feFlood flood-color="#FFE066" flood-opacity="0.5" result="glowColor"/>
-      <feComposite in="glowColor" in2="blur" operator="in" result="softGlow"/>
-      <feBlend in="SourceGraphic" in2="softGlow" mode="screen"/>
-    </filter>
-    
-    <!-- تأثير ظل -->
-    <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
-      <feOffset dx="0" dy="8" result="offsetblur"/>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.3"/>
-      </feComponentTransfer>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    
     <!-- خطوط مخصصة -->
     <style type="text/css">
       @font-face {
         font-family: 'VEXA';
         src: url('../assets/fonts/VEXA-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
       }
       @font-face {
         font-family: 'MusketBold';
         src: url('../assets/fonts/MusketBold.woff2') format('woff2');
+        font-weight: bold;
+        font-style: normal;
       }
     </style>
   </defs>
   
-  <!-- الخلفية الرئيسية بتدرج ثلاثي الألوان -->
+  <!-- الخلفية الرئيسية -->
   <rect width="800" height="600" fill="url(#main-gradient)"/>
   
-  <!-- نمط النجوم الخفيف -->
-  <rect width="800" height="600" fill="url(#stars-pattern)"/>
+  <!-- دائرة مركزية خفيفة -->
+  <circle cx="400" cy="300" r="280" fill="none" stroke="white" stroke-width="1" stroke-dasharray="10 5" opacity="0.3"/>
   
-  <!-- دائرة مركزية زخرفية -->
-  <circle cx="400" cy="300" r="280" fill="none" stroke="white" stroke-width="2" stroke-dasharray="10 5" opacity="0.3"/>
-  <circle cx="400" cy="300" r="260" fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+  <!-- الشعار العلوي بالإنجليزية -->
+  <text x="400" y="160" font-family="MusketBold, Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="2">
+    <tspan>Refaat Courses</tspan>
+  </text>
+  
+  <!-- الشعار العلوي بالعربية -->
+  <text x="400" y="195" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="1">
+    <tspan>منصة رفعت التعليمية</tspan>
+  </text>
+  
+  <!-- خط فاصل مزخرف -->
+  <path d="M250 220 L550 220" stroke="white" stroke-width="3" stroke-dasharray="10 5"/>
+  <circle cx="400" cy="220" r="8" fill="#FFE066"/>
+  
+  <!-- العنوان الرئيسي بالإنجليزية -->
+  <text x="400" y="270" font-family="MusketBold, Arial, sans-serif" font-size="26" text-anchor="middle" fill="white" font-weight="bold">
+    <tspan>CERTIFICATE OF ACHIEVEMENT</tspan>
+  </text>
+  
+  <!-- العنوان الرئيسي بالعربية -->
+  <text x="400" y="305" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="28" text-anchor="middle" fill="white" font-weight="bold">
+    <tspan>شهادة إتمام وإنجاز</tspan>
+  </text>
+  
+  <!-- نص "يمنح لـ" بالإنجليزية -->
+  <text x="400" y="350" font-family="MusketBold, Arial, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.9">
+    <tspan>This Certificate is Presented to</tspan>
+  </text>
+  
+  <!-- نص "يمنح لـ" بالعربية -->
+  <text x="400" y="375" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="20" text-anchor="middle" fill="white" opacity="0.9">
+    <tspan>تُمنح هذه الشهادة إلى</tspan>
+  </text>
+  
+  <!-- اسم الطفل (مكان فارغ للتعبئة) -->
+  <rect x="250" y="390" width="300" height="50" rx="10" fill="white" opacity="0.2" stroke="#FFE066" stroke-width="2"/>
+  <text x="400" y="420" font-family="MusketBold, Arial, sans-serif" font-size="28" text-anchor="middle" fill="white" font-weight="bold" id="cert-name">
+    <tspan>[اسم الطفل]</tspan>
+  </text>
+  
+  <!-- نص الإنجاز بالإنجليزية -->
+  <text x="400" y="470" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>For successfully completing all monthly challenges</tspan>
+  </text>
+  <text x="400" y="490" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>with creativity, dedication, and excellence</tspan>
+  </text>
+  
+  <!-- نص الإنجاز بالعربية -->
+  <text x="400" y="520" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.95">
+    <tspan>لإتمامه جميع التحديات الشهرية بإبداع وتميز</tspan>
+  </text>
   
   <!-- الكأس الذهبي في الأعلى -->
-  <g transform="translate(400, 100)" filter="url(#glow)">
+  <g transform="translate(400, 100)" opacity="0.9">
     <!-- قاعدة الكأس -->
-    <ellipse cx="0" cy="60" rx="35" ry="15" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    <ellipse cx="0" cy="50" rx="30" ry="12" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
     
     <!-- جسم الكأس -->
-    <path d="M-25 0 Q-35 -40 0 -60 Q35 -40 25 0 L15 40 Q0 50 -15 40 Z" fill="url(#trophy-gradient)" stroke="#8B4513" stroke-width="3"/>
-    
-    <!-- مقبض الكأس -->
-    <path d="M-20 10 Q-30 20 -25 35 Q-15 45 -5 40 L-5 20 Q-10 25 -15 20 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
-    <path d="M20 10 Q30 20 25 35 Q15 45 5 40 L5 20 Q10 25 15 20 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    <path d="M-20 0 Q-30 -40 0 -60 Q30 -40 20 0 L15 40 Q0 50 -15 40 Z" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
     
     <!-- نجمة على الكأس -->
     <path d="M0 -60 L3 -55 L8 -55 L5 -50 L6 -45 L0 -48 L-6 -45 L-5 -50 L-10 -55 L-3 -55 Z" fill="#FFE066" stroke="white" stroke-width="1"/>
   </g>
   
-  <!-- الشعار العلوي بالإنجليزية -->
-  <text x="400" y="180" font-family="MusketBold, Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="2">
-    <tspan>Refaat Courses</tspan>
-  </text>
+  <!-- الميدالية في الأسفل -->
+  <g transform="translate(400, 550)">
+    <circle cx="0" cy="0" r="25" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="2"/>
+    <circle cx="0" cy="0" r="18" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="4 2"/>
+    <path d="M0 -15 L5 -10 L10 -15 L8 0 L10 15 L5 10 L0 15 L-5 10 L-10 15 L-8 0 L-10 -15 L-5 -10 Z" fill="#6C63FF" stroke="white" stroke-width="1"/>
+    <circle cx="0" cy="0" r="8" fill="#FFE066" stroke="white" stroke-width="1.5"/>
+  </g>
   
-  <!-- الشعار العلوي بالعربية -->
-  <text x="400" y="215" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="white" letter-spacing="1">
-    <tspan>منصة رفعت التعليمية</tspan>
-  </text>
-  
-  <!-- خط فاصل مزخرف -->
-  <path d="M200 240 L350 240 M450 240 L600 240" stroke="white" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="400" cy="240" r="8" fill="#FFE066"/>
-  
-  <!-- العنوان الرئيسي بالإنجليزية -->
-  <text x="400" y="290" font-family="MusketBold, Arial, sans-serif" font-size="28" text-anchor="middle" fill="white" font-weight="bold">
-    <tspan>CERTIFICATE OF ACHIEVEMENT</tspan>
-  </text>
-  
-  <!-- العنوان الرئيسي بالعربية -->
-  <text x="400" y="325" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="30" text-anchor="middle" fill="white" font-weight="bold">
-    <tspan>شهادة إتمام وإنجاز</tspan>
-  </text>
-  
-  <!-- نص "يمنح لـ" بالإنجليزية -->
-  <text x="400" y="380" font-family="MusketBold, Arial, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.9">
-    <tspan>This Certificate is Presented to</tspan>
-  </text>
-  
-  <!-- نص "يمنح لـ" بالعربية -->
-  <text x="400" y="405" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="20" text-anchor="middle" fill="white" opacity="0.9">
-    <tspan>تُمنح هذه الشهادة إلى</tspan>
-  </text>
-  
-  <!-- اسم الطفل (مكان فارغ للتعبئة) -->
-  <rect x="200" y="420" width="400" height="60" rx="10" fill="white" opacity="0.2" stroke="#FFE066" stroke-width="3" stroke-dasharray="5 5"/>
-  <text x="400" y="460" font-family="MusketBold, Arial, sans-serif" font-size="32" text-anchor="middle" fill="white" font-weight="bold" id="cert-name">
-    <tspan>[اسم الطفل]</tspan>
-  </text>
-  
-  <!-- نص الإنجاز بالإنجليزية -->
-  <text x="400" y="510" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
-    <tspan>For successfully completing all monthly challenges</tspan>
-  </text>
-  <text x="400" y="530" font-family="MusketBold, Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" opacity="0.95">
-    <tspan>with creativity, dedication, and excellence</tspan>
-  </text>
-  
-  <!-- نص الإنجاز بالعربية -->
-  <text x="400" y="560" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="18" text-anchor="middle" fill="white" opacity="0.95">
-    <tspan>لإتمامه جميع التحديات الشهرية بإبداع وتميز</tspan>
-  </text>
-  
-  <!-- النجوم الزخرفية حول الاسم -->
-  <path d="M150 450 L154 458 L162 458 L156 463 L157 472 L150 467 L143 472 L144 463 L138 458 L146 458 Z" fill="#FFE066" stroke="white" stroke-width="1" opacity="0.9"/>
-  <path d="M650 450 L654 458 L662 458 L656 463 L657 472 L650 467 L643 472 L644 463 L638 458 L646 458 Z" fill="#FFE066" stroke="white" stroke-width="1" opacity="0.9"/>
-  
-  <!-- شريط التوقيعات -->
+  <!-- التوقيعات -->
   <g transform="translate(0, 50)">
     <!-- خط التوقيع الأيسر -->
-    <line x1="150" y1="530" x2="300" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
-    <text x="225" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Parent's Signature</text>
-    <text x="225" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">توقيع ولي الأمر</text>
+    <line x1="200" y1="530" x2="350" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="275" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Parent's Signature</text>
+    <text x="275" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">توقيع ولي الأمر</text>
     
     <!-- خط التوقيع الأيمن -->
-    <line x1="500" y1="530" x2="650" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
-    <text x="575" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Platform Director</text>
-    <text x="575" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">مدير المنصة</text>
+    <line x1="450" y1="530" x2="600" y2="530" stroke="white" stroke-width="2" stroke-dasharray="5 3"/>
+    <text x="525" y="555" font-family="MusketBold, Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Platform Director</text>
+    <text x="525" y="575" font-family="VEXA, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" font-size="14" text-anchor="middle" fill="white">مدير المنصة</text>
   </g>
   
-  <!-- الميدالية في الأسفل -->
-  <g transform="translate(400, 550)" filter="url(#drop-shadow)">
-    <circle cx="0" cy="0" r="35" fill="url(#gold-gradient)" stroke="#8B4513" stroke-width="3"/>
-    <circle cx="0" cy="0" r="28" fill="none" stroke="white" stroke-width="2" stroke-dasharray="4 2"/>
-    <path d="M0 -20 L6 -10 L15 -15 L10 0 L15 15 L6 10 L0 20 L-6 10 L-15 15 L-10 0 L-15 -15 L-6 -10 Z" fill="#6C63FF" stroke="white" stroke-width="1.5"/>
-    <circle cx="0" cy="0" r="10" fill="#FFE066" stroke="white" stroke-width="2"/>
-  </g>
-  
-  <!-- النجوم الطائرة حول الكأس -->
+  <!-- النجوم الزخرفية -->
   <g opacity="0.7">
     <path d="M300 80 L303 85 L308 85 L305 89 L306 95 L300 91 L294 95 L295 89 L290 85 L297 85 Z" fill="#FFFFFF"/>
     <path d="M500 80 L503 85 L508 85 L505 89 L506 95 L500 91 L494 95 L495 89 L490 85 L497 85 Z" fill="#FFFFFF"/>
@@ -181,18 +142,9 @@
     <tspan>جميع الحقوق محفوظة © ٢٠٢٦ ER1991</tspan>
   </text>
   
-  <!-- الأيقونة الصغيرة في الزاوية -->
-  <g transform="translate(50, 550)" opacity="0.8">
-    <circle cx="0" cy="0" r="15" fill="#FFE066" stroke="#6C63FF" stroke-width="2"/>
-    <path d="M-5 -5 L5 -5 L0 5 Z" fill="#6C63FF"/>
+  <!-- أيقونة في الزاوية -->
+  <g transform="translate(50, 550)">
+    <circle cx="0" cy="0" r="12" fill="#FFE066" stroke="#6C63FF" stroke-width="2"/>
+    <path d="M-4 -4 L4 -4 L0 4 Z" fill="#6C63FF"/>
   </g>
-  
-  <!-- أيقونة في الزاوية الأخرى -->
-  <g transform="translate(750, 550)" opacity="0.8">
-    <circle cx="0" cy="0" r="15" fill="#74EBD5" stroke="#6C63FF" stroke-width="2"/>
-    <path d="M-5 0 L5 0 L0 -5 Z" fill="#6C63FF"/>
-  </g>
-  
-  <!-- شكل هندسي زخرفي في الخلفية -->
-  <path d="M400 300 L430 330 L400 360 L370 330 Z" fill="none" stroke="white" stroke-width="1" opacity="0.1" transform="scale(8)"/>
 </svg>
