@@ -1,0 +1,54 @@
+{
+  "name": "Certificate",
+  "type": "object",
+  "properties": {
+    "child_id": {
+      "type": "string",
+      "description": "\u0645\u0639\u0631\u0641 \u0627\u0644\u0637\u0641\u0644"
+    },
+    "child_name": {
+      "type": "string",
+      "description": "\u0627\u0633\u0645 \u0627\u0644\u0637\u0641\u0644"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "week",
+        "month",
+        "course"
+      ],
+      "description": "\u0646\u0648\u0639 \u0627\u0644\u0634\u0647\u0627\u062f\u0629"
+    },
+    "title": {
+      "type": "string",
+      "description": "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0634\u0647\u0627\u062f\u0629"
+    },
+    "message": {
+      "type": "string",
+      "description": "\u0631\u0633\u0627\u0644\u0629 \u062a\u062d\u0641\u064a\u0632\u064a\u0629"
+    },
+    "week_number": {
+      "type": "number",
+      "description": "\u0631\u0642\u0645 \u0627\u0644\u0623\u0633\u0628\u0648\u0639"
+    },
+    "month_number": {
+      "type": "number",
+      "description": "\u0631\u0642\u0645 \u0627\u0644\u0634\u0647\u0631"
+    },
+    "points_earned": {
+      "type": "number",
+      "description": "\u0627\u0644\u0646\u0642\u0627\u0637 \u0627\u0644\u0645\u0643\u062a\u0633\u0628\u0629"
+    },
+    "issued_date": {
+      "type": "string",
+      "format": "date",
+      "description": "\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0625\u0635\u062f\u0627\u0631"
+    }
+  },
+  "required": [
+    "child_id",
+    "child_name",
+    "type",
+    "title"
+  ]
+}
