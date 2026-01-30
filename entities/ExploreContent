@@ -1,0 +1,67 @@
+{
+  "name": "ExploreContent",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u062d\u062a\u0648\u0649"
+    },
+    "description": {
+      "type": "string",
+      "description": "\u0648\u0635\u0641 \u0645\u062e\u062a\u0635\u0631"
+    },
+    "content": {
+      "type": "string",
+      "description": "\u0627\u0644\u0645\u062d\u062a\u0648\u0649 \u0627\u0644\u062a\u0641\u0635\u064a\u0644\u064a"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "space",
+        "human_body",
+        "animals",
+        "nature",
+        "technology",
+        "history"
+      ],
+      "description": "\u062a\u0635\u0646\u064a\u0641 \u0627\u0644\u0645\u062d\u062a\u0648\u0649"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "\u0635\u0648\u0631\u0629 \u062a\u0648\u0636\u064a\u062d\u064a\u0629"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "\u0631\u0627\u0628\u0637 \u0641\u064a\u062f\u064a\u0648"
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "\u062d\u0642\u0627\u0626\u0642 \u0645\u0645\u062a\u0639\u0629"
+    },
+    "quiz_questions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "\u0623\u0633\u0626\u0644\u0629 \u0627\u062e\u062a\u0628\u0627\u0631\u064a\u0629"
+    },
+    "week": {
+      "type": "number",
+      "description": "\u0627\u0644\u0623\u0633\u0628\u0648\u0639"
+    },
+    "points": {
+      "type": "number",
+      "default": 15,
+      "description": "\u0627\u0644\u0646\u0642\u0627\u0637"
+    }
+  },
+  "required": [
+    "title",
+    "category",
+    "content",
+    "week"
+  ]
+}
