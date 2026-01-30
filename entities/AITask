@@ -1,0 +1,33 @@
+{
+  "name": "AITask",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u0647\u0645\u0629"
+    },
+    "description": {
+      "type": "string",
+      "description": "\u0634\u0631\u062d \u0627\u0644\u0645\u0647\u0645\u0629"
+    },
+    "prompt_template": {
+      "type": "string",
+      "description": "\u0642\u0627\u0644\u0628 \u0627\u0644\u0640 Prompt \u0627\u0644\u062c\u0627\u0647\u0632"
+    },
+    "week": {
+      "type": "number",
+      "description": "\u0627\u0644\u0623\u0633\u0628\u0648\u0639"
+    },
+    "points": {
+      "type": "number",
+      "default": 15,
+      "description": "\u0627\u0644\u0646\u0642\u0627\u0637"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "prompt_template",
+    "week"
+  ]
+}
